@@ -1,8 +1,0 @@
-name: "My Own Website, Bitches"
-navbar:
-  title: "My OWN Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Readme"
-      href: Readme.html
