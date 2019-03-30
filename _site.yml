@@ -1,8 +1,8 @@
 name: "My Own Website, Bitches"
 navbar:
-  title: "My Website"
+  title: "My OWN Website"
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "Readme"
       href: about.html
