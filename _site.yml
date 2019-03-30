@@ -5,4 +5,4 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Readme"
-      href: about.html
+      href: Readme.html
