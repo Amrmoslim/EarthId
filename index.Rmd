@@ -8,12 +8,12 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-### **PERSONAL PROFILE**
+#### **PERSONAL PROFILE**
 
 
 A versatile and highly skilled Geophysicist with 9+ years industry experience, and wide ranging expertise from interpretation in exploration and resource development to 3D depth imaging technology development and application using a wide range of geosciences software. Experienced in seismic interpretation, prospect generation; computer mapping and 3D visualization. Adept at working and communicating across disciplines and management levels. Have been both a popular and highly effective contributor to each of the teams worked with.
 
-### **EDUCATION & TRAINING COURSES**
+#### **EDUCATION & TRAINING COURSES**
 
 - B.Sc in Geophysics, Faculty of Science, Cairo University (2006)
 -	Project Management MiniMBA, accredited from PMI (Ongoing)
@@ -27,12 +27,12 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 -	Economics 101 				*Stanford online university*
 -	Reservoir Geomechanics 			*Stanford online university*
 
-### **EXTRACURRICULAR ACTIVITIES**
+#### **EXTRACURRICULAR ACTIVITIES**
 
 -	Working as freelance instructor for Seismic Interpretation Methods, Fault Seal Analysis and Advanced Seismic Interpretation courses.
 - Creating and developing Android application for Fault Seal Analysis Quick look.
 
-### **PROGRAMS & COMPUTER SKILLS**
+#### **PROGRAMS & COMPUTER SKILLS**
 
 -	Petrel (Slb)
 -	Kingdom (SMT)
@@ -42,15 +42,15 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 - Office programs (Word, Excel, PowerPoint, and Access).  
 - Programming Languages (R, Python).  
 
-### **LANGUAGE SKILLS**
+#### **LANGUAGE SKILLS**
 
 - Very good command of English language (Spoken and Written).
 - Good command of Spanish language.
 - Arabic (Mother tongue).
 
-### **EXPERIENCE**
+#### **EXPERIENCE**
 
-### **2014 till present	Pico International Petroleum	Cairo, EGYPT**
+#### **2014 till present	Pico International Petroleum	Cairo, EGYPT**
 **Lead Geophysicist**  
 
 - Re-evaluated existing prospects and structures, including OIIP calculations and definition of relevant uncertainties and future requirement according to PRMS.   
@@ -62,7 +62,7 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 - Prepare G&G lesson learned report after drilling campaign.  
 - Presented the technical asset team to the government, third party and certifying body.  
   
-### **2008 till 2014	Pico International Petroleum	Cairo, EGYPT**  
+#### **2008 till 2014	Pico International Petroleum	Cairo, EGYPT**  
 
 **Geophysicist**
 
@@ -85,9 +85,9 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 - Proposed improvements for working procedures workflow to enhance efficiency and accuracy and to minimize time consuming.  
 - Worked as ISO Certificates champion for Exploration department.
 
-### **EXPERIENCE CONT’D**  
+#### **EXPERIENCE CONT’D**  
 
-### **2006 – 2008	EREX Petroleum	Cairo, EGYPT**  
+#### **2006 – 2008	EREX Petroleum	Cairo, EGYPT**  
 
 **Seismic Interpreter**  
 
@@ -101,12 +101,12 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 + Red Sea in Sudan Offshore data.  
 + Melut basin onshore data.   
 
-### **COMMUNITY ACTIVITIES**  
+#### **COMMUNITY ACTIVITIES**  
 
 -	A member of Geophysics Society at Cairo University.  
 - Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.  
 
-### **PERSONAL DATA**  
+#### **PERSONAL DATA**  
 
 - Address: 14Hassan Elkady Street, Haram Street,Gizah, Egypt.  
 - Tel: +20-11-28920000  
@@ -119,7 +119,7 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 
 ######################################################################
 
-### **Countries I have workd for :**  
+#### **Countries I Have Worked For :**  
 
 
 ```{r}
@@ -130,10 +130,29 @@ leaflet() %>%
   addMarkers(lng=-98.2, lat=22.3, popup="Tampico Misantla Basin") %>%
   addMarkers(lng=-93.2, lat=18.2, popup="South Eastern Basin") %>%
   addMarkers(lng=28.6, lat=31.44, popup="Midetrenean Sea Basin") %>%
-  addCircles(lng=28.6, lat=31.44, radius= 300000 ,color = "red" ,popup="Midetrenean Sea Basin") %>%
-  
-    addMarkers(lng=37.8, lat=21.4, popup="Red Sea Basin")
+  addMarkers(lng=32.29, lat=10.38, popup="Melut Basin") %>%
+  addMarkers(lng=37.8, lat=21.4, popup="Red Sea Basin")
+
 ```
 
+#### **Blocks I Have Participated In Evaluations :**
 
-### **References are available upon your request**  
+```{r}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addCircles(lng=33.35, lat=28.3, radius= 100000 ,color = "red" ,popup="Midetrenean Sea Basin") %>%
+  addCircles(lng=-98.2, lat=22.3, radius= 100000 ,color = "red" ,popup="Tampico Misantla Basin") %>%
+  addCircles(lng=-93.0, lat=18.0, radius= 100000 ,color = "red" ,popup="South Eastern Basin") %>%
+  addCircles(lng=-93.2, lat=18.2, radius= 100000 ,color = "red" ,popup="South Eastern Basin") %>%
+  addCircles(lng=-93.4, lat=18.4, radius= 100000 ,color = "red" ,popup="South Eastern Basin") %>%
+  addCircles(lng=-93.6, lat=18.6, radius= 100000 ,color = "red" ,popup="South Eastern Basin") %>%
+  addCircles(lng=03.46, lat=56.35, radius= 100000 ,color = "red" ,popup="North Sea Basin") %>%
+  addCircles(lng=-98.95, lat=31.17, radius= 100000 ,color = "red" ,popup="Taxes Basin") %>%
+  addCircles(lng=43.95, lat=35.17, radius= 100000 ,color = "red" ,popup="Taxes Basin") %>%
+  addCircles(lng=28.3, lat=29.8, radius= 100000 ,color = "red" ,popup="Midetrenean Sea Basin") %>%
+  addCircles(lng=-93.8, lat=18.8, radius= 100000 ,color = "red" ,popup="South Eastern Basin") 
+
+```
+
+##### **References are available upon your request**  
