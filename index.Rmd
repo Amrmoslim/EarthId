@@ -30,57 +30,84 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 
 ### **EXTRACURRICULAR ACTIVITIES**
 
-*???	Working as freelance instructor for Seismic Interpretation Methods, Fault Seal Analysis and Advanced Seismic Interpretation courses.
-???* Creating and developing Android application for Fault Seal Analysis Quick look.
+-	Working as freelance instructor for Seismic Interpretation Methods, Fault Seal Analysis and Advanced Seismic Interpretation courses.
+- Creating and developing Android application for Fault Seal Analysis Quick look.
 
 ### **PROGRAMS & COMPUTER SKILLS**
 
-*???	Petrel (Slb)
-???*	Kingdom (SMT)
-???*	GeoFrame ( Charisma software- Imain and CPS-3)
-???*	Lithotect (GLS)  (Restoration)
-???*	Hampson Russell  
-???*	Office programs (Word, Excel, PowerPoint, and Access).
+-	Petrel (Slb)
+-	Kingdom (SMT)
+-	GeoFrame ( Charisma software- Imain and CPS-3)
+-	Lithotect (GLS)  (Restoration)
+- Hampson Russell  
+???-	Office programs (Word, Excel, PowerPoint, and Access).
 
 ### **LANGUAGE SKILLS**
 
-*	Very good command of English language (Spoken and Written).
-* Good command of Spanish language.
-* Arabic (Mother tongue).
+- Very good command of English language (Spoken and Written).
+- Good command of Spanish language.
+- Arabic (Mother tongue).
 
-### EXPERIENCE**
+###*** EXPERIENCE***
 
 ### **2014 - present	Pico International Petroleum	Cairo, EGYPT**
 **Lead Geophysicist**
-???*	Re-evaluated existing prospects and structures, including OIIP calculations and definition of relevant uncertainties and future requirement according to PRMS.
-???*	Worked with fully integrated team of Drillers, Geoscientists and Reservoir Engineers to define the best well locations and designs for work overs.
-???*	Seismic stratigraphic and structural interpretation & use of multiple seismic attributes to generate geological model.
-???*	Applied different techniques of depth conversion to reduce uncertainty and drilling risks.
-???*	Site survey operation coordinator and operations supervisor, responsible for company cost estimates.
-???*	2D and 3D seismic survey designing and planning for onshore Mexico.
-???*	Prepare G&G lesson learned report after drilling campaign.
-???*	Presented the technical asset team to the government, third party and certifying body. 
+-	Re-evaluated existing prospects and structures, including OIIP calculations and definition of relevant uncertainties and future requirement according to PRMS.
+-	Worked with fully integrated team of Drillers, Geoscientists and Reservoir Engineers to define the best well locations and designs for work overs.
+???-	Seismic stratigraphic and structural interpretation & use of multiple seismic attributes to generate geological model.
+-	Applied different techniques of depth conversion to reduce uncertainty and drilling risks.
+- Site survey operation coordinator and operations supervisor, responsible for company cost estimates.
+???-	2D and 3D seismic survey designing and planning for onshore Mexico.
+???-	Prepare G&G lesson learned report after drilling campaign.
+???-	Presented the technical asset team to the government, third party and certifying body. 
 
 ### **2008 - 2014	Pico International Petroleum	Cairo, EGYPT**
 ***Geophysicist** 
-???*	Created detailed seismic interpretation and review of existing fields, adjacent appraisal targets, undeveloped discoveries and exploration prospects using both 2D and 3D seismic data sets. 
-???*	Well to seismic tie by creating synthetic seismograms, VSP and Correlate time frequency and phase misties. Tailored mistie Analysis for 2D vintages using Kingdom and Petrel packages. 
-???*	Constructed time, depth and attribute maps to provide seismic input to field development and appraisal planning and drilling.
-???*	Extracted amplitude and Horizon attributes to support defining structural model.
-???*	Developed velocity analysis, built velocity models and performing Depth conversion Error Analysis.
-???*	Created 3D static model (Fault model, Horizon model, Property distribution) using petrel Software.
-???*	Created Fault seal analysis using MS Excel software. 
-???*	Conducted Risk analysis and reserve estimation for onshore Mexico exploration project. 
-???*	Defined fractures trends map upon integrated maps (direct and indirect fractures indicators) to support fracture modeling.
-???*	Prepared timely technical proposals for drilling undeveloped and exploration prospects according to the agreed drilling sequence.
-???*	Contributed geophysical input to detailed reservoir geological interpretation, and reserves estimates.
-???*	Proposed and contribute to the planning and follow up of seismic surveys acquisition, processing and re-processing, if required.
-???*	Proposed and contribute to the planning and follow up of drilling developing / Exploration wells 
-???*	Assisted, followed up and monitor the seismic inversion process / technical studies made by a third party.
-???*	Provided schedules for work, followed up/warning management of any slippage at the earliest possible time and took corrective actions, if required.
-???*	Witnessed and managed seismic acquisition and processing shallow and deep horizons onshore data
-???*	Proposed improvements for working procedures workflow to enhance efficiency and accuracy and to minimize time consuming.
-*	Worked as ISO Certificates champion for Exploration department.
+???-	Created detailed seismic interpretation and review of existing fields, adjacent appraisal targets, undeveloped discoveries and exploration prospects using both 2D and 3D seismic data sets. 
+???-	Well to seismic tie by creating synthetic seismograms, VSP and Correlate time frequency and phase misties. Tailored mistie Analysis for 2D vintages using Kingdom and Petrel packages. 
+???-	Constructed time, depth and attribute maps to provide seismic input to field development and appraisal planning and drilling.
+???-	Extracted amplitude and Horizon attributes to support defining structural model.
+???-	Developed velocity analysis, built velocity models and performing Depth conversion Error Analysis.
+???-	Created 3D static model (Fault model, Horizon model, Property distribution) using petrel Software.
+???-	Created Fault seal analysis using MS Excel software. 
+???-	Conducted Risk analysis and reserve estimation for onshore Mexico exploration project. 
+???-	Defined fractures trends map upon integrated maps (direct and indirect fractures indicators) to support fracture modeling.
+???-	Prepared timely technical proposals for drilling undeveloped and exploration prospects according to the agreed drilling sequence.
+???-	Contributed geophysical input to detailed reservoir geological interpretation, and reserves estimates.
+???-	Proposed and contribute to the planning and follow up of seismic surveys acquisition, processing and re-processing, if required.
+???-	Proposed and contribute to the planning and follow up of drilling developing / Exploration wells 
+???-	Assisted, followed up and monitor the seismic inversion process / technical studies made by a third party.
+???-	Provided schedules for work, followed up/warning management of any slippage at the earliest possible time and took corrective actions, if required.
+???-	Witnessed and managed seismic acquisition and processing shallow and deep horizons onshore data
+???-	Proposed improvements for working procedures workflow to enhance efficiency and accuracy and to minimize time consuming.
+- Worked as ISO Certificates champion for Exploration department.
+
+### **EXPERIENCE CONT'D**
+### ** 2006 -2008	EREX Petroleum	Cairo, EGYPT**
+**Seismic Interpreter** 
+???-	Data preparation and loading to Kingdom and Petrel.
+???-	Synthetic seismograms, Creating and Correlation.
+???-	Mistie Analysis using Kingdom package 
+???-	Created Time Maps ,Generated Velocity Analysis and Depth maps 
+???-	2D Structural Restoration.
+???-	Working in Seismic Interpretation for multiple horizons in: 
+???-	Gulf of Suez Offshore data.
+???-	Red Sea in Sudan Offshore data.
+-???	Melut basin onshore data. 
+### *** COMMUNITY ACTIVITIES**
+
+???-	A member of Geophysics Society at Cairo University
+???-	Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.
+###***PERSONAL DATA**
+
+???-	Address: 14Hassan Elkady Street, Haram Street,Gizah, Egypt.
+???-	Tel: +20-11-28920000
+???-	Email: a_moslim@live.com 
+???-	Date of birth: 1st October 1984
+???-	Nationality: Egyptian.
+???-	Marital Status: Married.
+???-	Military service: Exempted.
+*** References are available upon your request ***
 
 
 
