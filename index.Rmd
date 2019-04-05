@@ -25,8 +25,8 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 -	Risk Identification and Assessment.
 -	Prospective and Contingent Resources within PRMS. (Gaffney,Cline& Associates)
 -	Several QHSE internal awareness sessions.
--	Economics 101 					Stanford online university
--	Reservoir Geomechanics 			Stanford online university	
+-	Economics 101 				*Stanford online university*
+-	Reservoir Geomechanics 			*Stanford online university*
 
 ### **EXTRACURRICULAR ACTIVITIES**
 
@@ -39,8 +39,9 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 -	Kingdom (SMT)
 -	GeoFrame ( Charisma software- Imain and CPS-3)
 -	Lithotect (GLS)  (Restoration)
-- Hampson Russell  
-- Office programs (Word, Excel, PowerPoint, and Access).
+- Hampson Russell.  
+- Office programs (Word, Excel, PowerPoint, and Access).  
+- Programming Languages (R, Python).  
 
 ### **LANGUAGE SKILLS**
 
@@ -62,60 +63,63 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 - Prepare G&G lesson learned report after drilling campaign.  
 - Presented the technical asset team to the government, third party and certifying body.  
   
-### **2008 till 2014	Pico International Petroleum	Cairo, EGYPT**
-***Geophysicist** 
+### **2008 till 2014	Pico International Petroleum	Cairo, EGYPT**  
 
--	Created detailed seismic interpretation and review of existing fields, adjacent appraisal targets, undeveloped discoveries and exploration prospects using both 2D and 3D seismic data sets. 
-- Well to seismic tie by creating synthetic seismograms, VSP and Correlate time frequency and phase misties. Tailored mistie Analysis for 2D vintages using Kingdom and Petrel packages. 
-- Constructed time, depth and attribute maps to provide seismic input to field development and appraisal planning and drilling.
-- Extracted amplitude and Horizon attributes to support defining structural model.
--	Developed velocity analysis, built velocity models and performing Depth conversion Error Analysis.
-- Created 3D static model (Fault model, Horizon model, Property distribution) using petrel Software.
--	Created Fault seal analysis using MS Excel software. 
-- Conducted Risk analysis and reserve estimation for onshore Mexico exploration project. 
-- Defined fractures trends map upon integrated maps (direct and indirect fractures indicators) to support fracture modeling.
-- Prepared timely technical proposals for drilling undeveloped and exploration prospects according to the agreed drilling sequence.
-- Contributed geophysical input to detailed reservoir geological interpretation, and reserves estimates.
-- Proposed and contribute to the planning and follow up of seismic surveys acquisition, processing and re-processing, if required.
-- Proposed and contribute to the planning and follow up of drilling developing / Exploration wells 
-- Assisted, followed up and monitor the seismic inversion process / technical studies made by a third party.
-- Provided schedules for work, followed up/warning management of any slippage at the earliest possible time and took corrective actions, if required.
-- Witnessed and managed seismic acquisition and processing shallow and deep horizons onshore data
-- Proposed improvements for working procedures workflow to enhance efficiency and accuracy and to minimize time consuming.
+**Geophysicist**
+
+- Created detailed seismic interpretation and review of existing fields, adjacent appraisal targets, undeveloped discoveries and exploration prospects using both 2D and 3D seismic data sets.  
+- Well to seismic tie by creating synthetic seismograms, VSP and Correlate time frequency and phase misties. Tailored mistie Analysis for 2D vintages using Kingdom and Petrel packages.  
+- Constructed time, depth and attribute maps to provide seismic input to field development and appraisal planning and drilling.  
+- Extracted amplitude and Horizon attributes to support defining structural model.  
+- Developed velocity analysis, built velocity models and performing Depth conversion Error Analysis.  
+- Created 3D static model (Fault model, Horizon model, Property distribution) using petrel Software.  
+- Created Fault seal analysis using MS Excel software.  
+- Conducted Risk analysis and reserve estimation for onshore Mexico exploration project.  
+- Defined fractures trends map upon integrated maps (direct and indirect fractures indicators) to support fracture modeling.  
+- Prepared timely technical proposals for drilling undeveloped and exploration prospects according to the agreed drilling sequence.  
+- Contributed geophysical input to detailed reservoir geological interpretation, and reserves estimates.  
+- Proposed and contribute to the planning and follow up of seismic surveys acquisition, processing and re-processing, if required.  
+- Proposed and contribute to the planning and follow up of drilling developing / Exploration wells.  
+- Assisted, followed up and monitor the seismic inversion process / technical studies made by a third party.  
+- Provided schedules for work, followed up/warning management of any slippage at the earliest possible time and took corrective actions, if required.  
+- Witnessed and managed seismic acquisition and processing shallow and deep horizons onshore data.  
+- Proposed improvements for working procedures workflow to enhance efficiency and accuracy and to minimize time consuming.  
 - Worked as ISO Certificates champion for Exploration department.
 
 ### **EXPERIENCE CONT’D**  
 
-### ** 2006 –2008	EREX Petroleum	Cairo, EGYPT**  
+### **2006 – 2008	EREX Petroleum	Cairo, EGYPT**  
 
 **Seismic Interpreter**  
 
-- Data preparation and loading to Kingdom and Petrel.  
-- Synthetic seismograms, Creating and Correlation.  
-- Mistie Analysis using Kingdom package.   
-- Created Time Maps ,Generated Velocity Analysis and Depth maps   
-- 2D Structural Restoration.  
-- Working in Seismic Interpretation for multiple horizons in:   
-+ Gulf of Suez Offshore data.  
+- Data preparation and loading to Kingdom and Petrel.  
+- Synthetic seismograms, Creating and Correlation.  
+- Mistie Analysis using Kingdom package.  
+- Created Time Maps ,Generated Velocity Analysis and Depth maps.  
+- 2D Structural Restoration.  
+- Working in Seismic Interpretation for multiple horizons in:  
++ Gulf of Suez Offshore data.  
 + Red Sea in Sudan Offshore data.  
 + Melut basin onshore data.   
 
-### *** COMMUNITY ACTIVITIES**  
+### **COMMUNITY ACTIVITIES**  
 
--	A member of Geophysics Society at Cairo University  
-- Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.  
+-	A member of Geophysics Society at Cairo University.  
+- Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.  
 
 ### **PERSONAL DATA**  
 
 - Address: 14Hassan Elkady Street, Haram Street,Gizah, Egypt.  
 - Tel: +20-11-28920000  
-- Email: a_moslim@live.com   
-- Date of birth: 1st October 1984  
-- Nationality: Egyptian.  
-- Marital Status: Married.  
-- Military service: Exempted.  
+- Email: a_moslim@live.com   
+- Date of birth: 1st October 1984.   
+- Nationality: Egyptian.  
+- Marital Status: Married.
+- Military service: Exempted.  
 
-** References are available upon your request **  
+### **References are available upon your request**  
+
+
 
 
 
