@@ -9,11 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## My Motive 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+A versatile and highly skilled Geophysicist with 9+ years industry experience, and wide ranging expertise from interpretation in exploration and resource development to 3D depth imaging technology development and application using a wide range of geosciences software. Experienced in seismic interpretation, prospect generation; computer mapping and 3D visualization. Adept at working and communicating across disciplines and management levels. Have been both a popular and highly effective contributor to each of the teams worked with.
 
 ```{r cars}
 summary(cars)
