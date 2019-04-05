@@ -9,7 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## My Motive 
+## My Motive objective 
+
 
 A versatile and highly skilled Geophysicist with 9+ years industry experience, and wide ranging expertise from interpretation in exploration and resource development to 3D depth imaging technology development and application using a wide range of geosciences software. Experienced in seismic interpretation, prospect generation; computer mapping and 3D visualization. Adept at working and communicating across disciplines and management levels. Have been both a popular and highly effective contributor to each of the teams worked with.
 
