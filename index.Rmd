@@ -116,26 +116,24 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 - Marital Status: Married.
 - Military service: Exempted.  
 
-### **References are available upon your request**  
-
-
-
-
-
-
 
 ######################################################################
 
-```{r cars}
-summary(cars)
+### **Countries I have workd for :**  
+
+
+```{r}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng=33.35, lat=28.3, popup="Gulf of Suez Basin") %>%
+  addMarkers(lng=-98.2, lat=22.3, popup="Tampico Misantla Basin") %>%
+  addMarkers(lng=-93.2, lat=18.2, popup="South Eastern Basin") %>%
+  addMarkers(lng=28.6, lat=31.44, popup="Midetrenean Sea Basin") %>%
+  addCircles(lng=28.6, lat=31.44, radius= 300000 ,color = "red" ,popup="Midetrenean Sea Basin") %>%
+  
+    addMarkers(lng=37.8, lat=21.4, popup="Red Sea Basin")
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### **References are available upon your request**  
