@@ -9,32 +9,31 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## PERSONAL PROFILE
+### **PERSONAL PROFILE**
 
 
 A versatile and highly skilled Geophysicist with 9+ years industry experience, and wide ranging expertise from interpretation in exploration and resource development to 3D depth imaging technology development and application using a wide range of geosciences software. Experienced in seismic interpretation, prospect generation; computer mapping and 3D visualization. Adept at working and communicating across disciplines and management levels. Have been both a popular and highly effective contributor to each of the teams worked with.
 
-## EDUCATION & TRAINING COURSES
+### **EDUCATION & TRAINING COURSES**
 
+- B.Sc in Geophysics, Faculty of Science, Cairo University (2006)
+-	Project Management MiniMBA, accredited from PMI (Ongoing)
+- Structural Restoration Modeling & Fault Prediction 
+-	Velocity analysis course, Schlumberger
+-	Advanced Seismic Interpretation.
+-	Application of Structural Geology in Seismic Data Interpretation.
+-	Risk Identification and Assessment.
+-	Prospective and Contingent Resources within PRMS. (Gaffney,Cline& Associates)
+-	Several QHSE internal awareness sessions.
+-	Economics 101 					Stanford online university
+-	Reservoir Geomechanics 			Stanford online university	
 
-???* 	B.Sc in Geophysics, Faculty of Science, Cairo University (2006)
-???* 	Project Management MiniMBA, accredited from PMI (Ongoing)
-???* 	Structural Restoration Modeling & Fault Prediction 
-???*	Velocity analysis course, Schlumberger
-???*	Advanced Seismic Interpretation.
-???*	Application of Structural Geology in Seismic Data Interpretation.
-???*	Risk Identification and Assessment.
-???*	Prospective and Contingent Resources within PRMS. (Gaffney,Cline& Associates)
-???*	Several QHSE internal awareness sessions.
-???*	Economics 101 					Stanford online university
-???*	Reservoir Geomechanics 			Stanford online university	
-
-## EXTRACURRICULAR ACTIVITIES
+### **EXTRACURRICULAR ACTIVITIES**
 
 *???	Working as freelance instructor for Seismic Interpretation Methods, Fault Seal Analysis and Advanced Seismic Interpretation courses.
 ???* Creating and developing Android application for Fault Seal Analysis Quick look.
 
-## PROGRAMS & COMPUTER SKILLS
+### **PROGRAMS & COMPUTER SKILLS**
 
 *???	Petrel (Slb)
 ???*	Kingdom (SMT)
@@ -43,15 +42,15 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 ???*	Hampson Russell  
 ???*	Office programs (Word, Excel, PowerPoint, and Access).
 
-## LANGUAGE SKILLS
+### **LANGUAGE SKILLS**
 
 *	Very good command of English language (Spoken and Written).
 * Good command of Spanish language.
 * Arabic (Mother tongue).
 
-## EXPERIENCE
+### EXPERIENCE**
 
-### 2014 - present	Pico International Petroleum	Cairo, EGYPT
+### **2014 - present	Pico International Petroleum	Cairo, EGYPT**
 **Lead Geophysicist**
 ???*	Re-evaluated existing prospects and structures, including OIIP calculations and definition of relevant uncertainties and future requirement according to PRMS.
 ???*	Worked with fully integrated team of Drillers, Geoscientists and Reservoir Engineers to define the best well locations and designs for work overs.
@@ -62,8 +61,8 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 ???*	Prepare G&G lesson learned report after drilling campaign.
 ???*	Presented the technical asset team to the government, third party and certifying body. 
 
-### 2008 - 2014	Pico International Petroleum	Cairo, EGYPT
-**Geophysicist** 
+### **2008 - 2014	Pico International Petroleum	Cairo, EGYPT**
+***Geophysicist** 
 ???*	Created detailed seismic interpretation and review of existing fields, adjacent appraisal targets, undeveloped discoveries and exploration prospects using both 2D and 3D seismic data sets. 
 ???*	Well to seismic tie by creating synthetic seismograms, VSP and Correlate time frequency and phase misties. Tailored mistie Analysis for 2D vintages using Kingdom and Petrel packages. 
 ???*	Constructed time, depth and attribute maps to provide seismic input to field development and appraisal planning and drilling.
