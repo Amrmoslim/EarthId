@@ -1,7 +1,6 @@
 ---
-title: "My Own Website, Bitecheesssss"
-author: "Amrmoslim"
-date: "March 30, 2019"
+title: "Amr Mahmoud Abdelfattah"
+date: "March 30, 2017"
 output: html_document
 ---
 

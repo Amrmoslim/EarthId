@@ -1,5 +1,16 @@
 ---
 title: "About This Website"
+date: "March 30, 2017"
+output: html_document
 ---
+############################################
 
-More about this website.
+
+###  **The Game Changer** 
+This website has been created to demonstrate the Applications and **ideas** that I can share with the world from different categories and i will be happy to have comments, ideas or even criticism to my Apps, **ideas** or articles.  
+
+The world may not need another website but diffently the world needs more **ideas** either mature or immature **ideas**. the **ideas** will always be the game changer that leads to better tomorrow.  
+
+############################################
+
+Please dont hesitate to contact me over a_moslim@live.com to share your comments. 
