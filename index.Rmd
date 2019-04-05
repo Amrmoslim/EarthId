@@ -85,31 +85,35 @@ A versatile and highly skilled Geophysicist with 9+ years industry experience, a
 ### **EXPERIENCE CONT'D**
 ### ** 2006 -2008	EREX Petroleum	Cairo, EGYPT**
 **Seismic Interpreter** 
-???-	Data preparation and loading to Kingdom and Petrel.
-???-	Synthetic seismograms, Creating and Correlation.
-???-	Mistie Analysis using Kingdom package 
-???-	Created Time Maps ,Generated Velocity Analysis and Depth maps 
-???-	2D Structural Restoration.
-???-	Working in Seismic Interpretation for multiple horizons in: 
-???-	Gulf of Suez Offshore data.
-???-	Red Sea in Sudan Offshore data.
--???	Melut basin onshore data. 
+???-	Data preparation and loading to Kingdom and Petrel.  
+???-	Synthetic seismograms, Creating and Correlation.  
+???-	Mistie Analysis using Kingdom package.   
+???-	Created Time Maps ,Generated Velocity Analysis and Depth maps   
+???-	2D Structural Restoration.  
+???-	Working in Seismic Interpretation for multiple horizons in:   
+???+ Gulf of Suez Offshore data.  
++	Red Sea in Sudan Offshore data.  
++	Melut basin onshore data.   
 ### *** COMMUNITY ACTIVITIES**
 
-???-	A member of Geophysics Society at Cairo University
-???-	Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.
+???-	A member of Geophysics Society at Cairo University  
+???-	Managing the graduation project of final year students in Seismic interpretation, attributes and modeling.  
 ###***PERSONAL DATA**
 
-???-Address: 14Hassan Elkady Street, Haram Street,Gizah, Egypt.
-???-	Tel: +20-11-28920000
-???-	Email: a_moslim@live.com 
-???-	Date of birth: 1st October 1984
-???-	Nationality: Egyptian.
-???-	Marital Status: Married.
-???-	Military service: Exempted.
-*** References are available upon your request ***
+??? -Address: 14Hassan Elkady Street, Haram Street,Gizah, Egypt.  
+-	Tel: +20-11-28920000  
+???-	Email: a_moslim@live.com   
+???-	Date of birth: 1st October 1984  
+???-	Nationality: Egyptian.  
+???-	Marital Status: Married.  
+???-	Military service: Exempted.  
+*** References are available upon your request ***  
 
 
+
+
+
+######################################################################
 
 ```{r cars}
 summary(cars)
