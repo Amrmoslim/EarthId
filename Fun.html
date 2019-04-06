@@ -317,8 +317,24 @@ $(document).ready(function () {
 <div id="production-profile" class="section level3">
 <h3><strong>Production profile</strong></h3>
 <p>to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR)</p>
-<pre class="r"><code>Pi &lt;- 1000
-Duration = 10
+<pre class="r"><code>library(shiny)
+
+ numericInput(&quot;Duration&quot;, label = &quot;Years to Predict&quot;, 
+                   value = 10, min = 1, step = 1)</code></pre>
+<div class="form-group shiny-input-container">
+<label for="Duration">Years to Predict</label>
+<input id="Duration" type="number" class="form-control" value="10" min="1" step="1"/>
+</div>
+<pre class="r"><code> numericInput(&quot;Pi&quot;, label = &quot;Initial Rate&quot;, 
+                   value = 1000, min = 1, step = 1)</code></pre>
+<div class="form-group shiny-input-container">
+<label for="Pi">Initial Rate</label>
+<input id="Pi" type="number" class="form-control" value="1000" min="1" step="1"/>
+</div>
+<pre class="r"><code>predicted &lt;- reactive({
+
+#Pi &lt;- 1000
+#Duration = 10
 DR &lt;- 0.2
 df &lt;- NULL
 
@@ -328,33 +344,12 @@ for (i in 0:Duration) {
   print(paste(round(Pi,0),i+1))
 
 df &lt;- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
-}</code></pre>
-<pre><code>## [1] &quot;800 1&quot;
-## [1] &quot;640 2&quot;
-## [1] &quot;512 3&quot;
-## [1] &quot;410 4&quot;
-## [1] &quot;328 5&quot;
-## [1] &quot;262 6&quot;
-## [1] &quot;210 7&quot;
-## [1] &quot;168 8&quot;
-## [1] &quot;134 9&quot;
-## [1] &quot;107 10&quot;
-## [1] &quot;86 11&quot;</code></pre>
-<pre class="r"><code>df</code></pre>
-<pre><code>##    i...1 round.Pi..digits...0.
-## 1      1                   800
-## 2      2                   640
-## 3      3                   512
-## 4      4                   410
-## 5      5                   328
-## 6      6                   262
-## 7      7                   210
-## 8      8                   168
-## 9      9                   134
-## 10    10                   107
-## 11    11                    86</code></pre>
-<pre class="r"><code>plot(df, ylab= &quot;Production(STB)&quot;, xlab = &quot;Time in years&quot;)</code></pre>
-<p><img src="Fun_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+}
+
+df
+
+plot(df, ylab= &quot;Production(STB)&quot;, xlab = &quot;Time in years&quot;)
+})</code></pre>
 <div id="section-1" class="section level44">
 <p></p>
 <p>Please dont hesitate to contact me over <a href="mailto:a_moslim@live.com">a_moslim@live.com</a> to share your comments.</p>
