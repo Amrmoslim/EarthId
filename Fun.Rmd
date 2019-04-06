@@ -1,8 +1,9 @@
 ---
 title: "About This Website"
+output:
+  html_document: default
+  pdf_document: default
 date: "March 30, 2017"
-output: html_document
-runtime: shiny
 ---
 ############################################
 
@@ -13,18 +14,17 @@ to create production profile you need initial production (Pi), duration(Time), a
 
 ```{r production, echo=FALSE}
 library(shiny)
-
+inputPanel(
  numericInput("Duration", label = "Years to Predict", 
-                   value = 10, min = 1, step = 1)
+                   value = 10, min = 1, step = 1),
  numericInput("Pi", label = "Initial Rate", 
                    value = 1000, min = 1, step = 1)
+ )
 
-reactive({
-
-#Pi <- 1000
-#Duration = 10
+Pi <- 1000
+Duration = 10
 DR <- 0.2
-df <- data.frame(input$Pi,input$Duration)
+df <- NULL
 
 for (i in 0:as.numeric(Duration)) {
   
@@ -33,25 +33,14 @@ for (i in 0:as.numeric(Duration)) {
 
 df <- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
 }
-})
+
 df 
-
-renderPlot({
   
-  plot(input$df, ylab= "Production(STB)", xlab = "Time in years")
+  P<- plot(df, ylab= "Production(STB)", xlab = "Time in years")
   
-  })  
 
 ```
 
-```{r tabsets, echo=FALSE}
-shinyAppDir(
-  system.file("GitHub\Earthid.github.io", package = "shiny"),
-  options = list(
-    width = "100%", height = 550
-  )
-)
-```
 ############################################
 
 Please dont hesitate to contact me over a_moslim@live.com to share your comments. 
