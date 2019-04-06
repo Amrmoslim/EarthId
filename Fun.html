@@ -280,7 +280,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Earth ID</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -289,6 +289,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="about.html">About</a>
+</li>
+<li>
+  <a href="Fun.html">Fun</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -311,10 +314,47 @@ $(document).ready(function () {
 <div id="section" class="section level44">
 <p></p>
 </div>
-<div id="the-game-changer" class="section level3">
-<h3><strong>The Game Changer</strong></h3>
-<p>This website has been created to demonstrate the Applications and <strong>ideas</strong> that I can share with the world from different categories and i will be happy to have comments, ideas or even criticism to my Apps, <strong>ideas</strong> or articles.</p>
-<p>The world may not need another website but diffently the world needs more <strong>ideas</strong> either mature or immature <strong>ideas</strong>. the <strong>ideas</strong> will always be the game changer that leads to better tomorrow.</p>
+<div id="production-profile" class="section level3">
+<h3><strong>Production profile</strong></h3>
+<p>to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR)</p>
+<pre class="r"><code>Pi &lt;- 1000
+Duration = 10
+DR &lt;- 0.2
+df &lt;- NULL
+
+for (i in 0:Duration) {
+  
+  Pi = Pi- (Pi*DR)
+  print(paste(round(Pi,0),i+1))
+
+df &lt;- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
+}</code></pre>
+<pre><code>## [1] &quot;800 1&quot;
+## [1] &quot;640 2&quot;
+## [1] &quot;512 3&quot;
+## [1] &quot;410 4&quot;
+## [1] &quot;328 5&quot;
+## [1] &quot;262 6&quot;
+## [1] &quot;210 7&quot;
+## [1] &quot;168 8&quot;
+## [1] &quot;134 9&quot;
+## [1] &quot;107 10&quot;
+## [1] &quot;86 11&quot;</code></pre>
+<pre class="r"><code>df</code></pre>
+<pre><code>##    i...1 round.Pi..digits...0.
+## 1      1                   800
+## 2      2                   640
+## 3      3                   512
+## 4      4                   410
+## 5      5                   328
+## 6      6                   262
+## 7      7                   210
+## 8      8                   168
+## 9      9                   134
+## 10    10                   107
+## 11    11                    86</code></pre>
+<pre class="r"><code>plot(df, ylab= &quot;Production(STB)&quot;, xlab = &quot;Time in years&quot;)</code></pre>
+<p><img src="Fun_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <div id="section-1" class="section level44">
 <p></p>
 <p>Please dont hesitate to contact me over <a href="mailto:a_moslim@live.com">a_moslim@live.com</a> to share your comments.</p>

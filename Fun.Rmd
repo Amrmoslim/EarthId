@@ -6,10 +6,30 @@ output: html_document
 ############################################
 
 
-###  **The Game Changer** 
-This website has been created to demonstrate the Applications and **ideas** that I can share with the world from different categories and i will be happy to have comments, ideas or even criticism to my Apps, **ideas** or articles.  
+###  **Production profile**
 
-The world may not need another website but diffently the world needs more **ideas** either mature or immature **ideas**. the **ideas** will always be the game changer that leads to better tomorrow.  
+to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR) 
+```{r}
+
+Pi <- 1000
+Duration = 10
+DR <- 0.2
+df <- NULL
+
+for (i in 0:Duration) {
+  
+  Pi = Pi- (Pi*DR)
+  print(paste(round(Pi,0),i+1))
+
+df <- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
+}
+
+df
+
+plot(df, ylab= "Production(STB)", xlab = "Time in years")
+
+```
+
 
 ############################################
 
