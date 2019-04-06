@@ -2,6 +2,7 @@
 title: "About This Website"
 date: "March 30, 2017"
 output: html_document
+runtime: shiny
 ---
 ############################################
 
@@ -10,11 +11,7 @@ output: html_document
 
 to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR) 
 
-```{r}
-
-```
-
-```{r}
+```{r echo=FALSE}
 library(shiny)
 
  numericInput("Duration", label = "Years to Predict", 
@@ -22,7 +19,7 @@ library(shiny)
  numericInput("Pi", label = "Initial Rate", 
                    value = 1000, min = 1, step = 1)
 
-predicted <- reactive({
+reactive({
 
 #Pi <- 1000
 #Duration = 10
@@ -36,11 +33,11 @@ for (i in 0:Duration) {
 
 df <- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
 }
-
-df
-
-plot(df, ylab= "Production(STB)", xlab = "Time in years")
 })
+df 
+
+renderPlot({plot(df, ylab= "Production(STB)", xlab = "Time in years")})  
+
 ```
 
 

@@ -317,39 +317,13 @@ $(document).ready(function () {
 <div id="production-profile" class="section level3">
 <h3><strong>Production profile</strong></h3>
 <p>to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR)</p>
-<pre class="r"><code>library(shiny)
-
- numericInput(&quot;Duration&quot;, label = &quot;Years to Predict&quot;, 
-                   value = 10, min = 1, step = 1)</code></pre>
-<div class="form-group shiny-input-container">
+<p><div class="form-group shiny-input-container">
 <label for="Duration">Years to Predict</label>
 <input id="Duration" type="number" class="form-control" value="10" min="1" step="1"/>
-</div>
-<pre class="r"><code> numericInput(&quot;Pi&quot;, label = &quot;Initial Rate&quot;, 
-                   value = 1000, min = 1, step = 1)</code></pre>
-<div class="form-group shiny-input-container">
+</div><div class="form-group shiny-input-container">
 <label for="Pi">Initial Rate</label>
 <input id="Pi" type="number" class="form-control" value="1000" min="1" step="1"/>
-</div>
-<pre class="r"><code>predicted &lt;- reactive({
-
-#Pi &lt;- 1000
-#Duration = 10
-DR &lt;- 0.2
-df &lt;- NULL
-
-for (i in 0:Duration) {
-  
-  Pi = Pi- (Pi*DR)
-  print(paste(round(Pi,0),i+1))
-
-df &lt;- rbind(df,data.frame(i+1, round(Pi,digits = 0)))
-}
-
-df
-
-plot(df, ylab= &quot;Production(STB)&quot;, xlab = &quot;Time in years&quot;)
-})</code></pre>
+</div><pre id="outa54e984753ef9ad9" class="shiny-text-output noplaceholder"></pre><div id="outef622a0b05ecde99" class="shiny-plot-output" style="width: 100% ; height: 400px"></div></p>
 <div id="section-1" class="section level44">
 <p></p>
 <p>Please dont hesitate to contact me over <a href="mailto:a_moslim@live.com">a_moslim@live.com</a> to share your comments.</p>
