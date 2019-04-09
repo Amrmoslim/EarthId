@@ -23,17 +23,17 @@ inputPanel(
  )
 
 Pi <- 2000
-Duration = 10
+Duration = c(0:10)
 DR <- 0.2
 #df <- data.frame(Duration,Pi)
 df <- NULL
 
-for (i in 0:as.numeric(Duration)) {
+for (i < Duration) {
   
   Pi = Pi- (Pi*DR)
  # print(paste(round(Pi,0),i+1))
 
-df <- rbind(df,data.frame(i+1, round(Pi,0)))
+df <- rbind(df,data.frame(i, round(Pi,0)))
 #df <- rbind(df,i, round(Pi,0))
 
 }
@@ -48,7 +48,7 @@ df
 p<- ggplot(df, aes(Time,Production))+geom_point()+geom_line(colour = "blue")
 plotly::ggplotly(p)
 
-
+print(paste('the total production is' , sum(df$Production)*365))
 
 ```
 
