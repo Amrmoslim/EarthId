@@ -2,7 +2,6 @@
 title: "About This Website"
 output:
   html_document: default
-  pdf_document: default
 date: "March 30, 2017"
 ---
 ############################################
@@ -28,7 +27,7 @@ DR <- 0.2
 #df <- data.frame(Duration,Pi)
 df <- NULL
 
-for (i < Duration) {
+for (i in Duration) {
   
   Pi = Pi- (Pi*DR)
  # print(paste(round(Pi,0),i+1))
