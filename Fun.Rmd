@@ -1,7 +1,10 @@
 ---
 title: "Production Profile"
 output:
-  html_document: default
+  html_document: 
+    highlight: kate
+    theme: united
+    toc: yes
 date: "March 30, 2017"
 ---
 ############################################
@@ -11,16 +14,17 @@ date: "March 30, 2017"
 
 to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR) 
 
-```{r production, echo=FALSE}
-library(shiny)
-library(ggplot2)
-inputPanel(
- numericInput("Duration", label = "Years to Predict", 
-                   value = 10, min = 1, step = 1),
- numericInput("Pi", label = "Initial Rate", 
-                   value = 1000, min = 1, step = 1)
- )
-
+## the inputs to the model
+```{r production}
+# library(shiny)
+ library(ggplot2)
+# inputPanel(
+#  numericInput("Duration", label = "Years to Predict", 
+#                    value = 10, min = 1, step = 1),
+#  numericInput("Pi", label = "Initial Rate", 
+#                    value = 1000, min = 1, step = 1)
+#  )
+# 
 Pi <- 2000
 Duration = c(0:10)
 DR <- 0.2
@@ -41,14 +45,23 @@ df <- rbind(df,data.frame(i, round(Pi,0)))
 names(df)[1] <- "Time"
 names(df)[2] <- "Production"
 
-df
+```
 
-# ggplot(df, ylab= "Production(STB)", xlab = "Time in years")+geom_smooth(aes(x=df$i, y=df$Pi))
+## the expected production per day yearly 
+```{r output, echo=TRUE, message=FALSE, warning=FALSE}
+knitr::kable(df)
+
+```
+
+## a graph shows the production forecast for the field life time
+```{r}
 p<- ggplot(df, aes(Time,Production))+geom_point()+geom_line(colour = "blue")
 plotly::ggplotly(p)
+```
 
+## the Cumulative production during the 'Duration' 
+```{r}
 print(paste('the total production is' , sum(df$Production)*365))
-
 ```
 
 ############################################
