@@ -11,61 +11,97 @@ output:
     fig_caption: yes
 ---
 
-## A New Output Format
 
-`html_pretty` in the [**prettydoc**](http://github.com/yixuan/prettydoc/)
-package is a new output format for creating HTML document from R Markdown files.
-`html_pretty` is more lightweight compared to `html_document`, and is more
-stylish than `html_vignette` when creating package vignettes.
-
-## New Styles
-
-`html_pretty` currently supports three page themes (`cayman`, `tactile` and
-`architect`), and two syntax highlight styles (`github` and `vignette`).
-The theme and highlight styles can be specified in the document metadata,
-for example:
-
-```yaml
-output:
-  prettydoc::html_pretty:
-    theme: architect
-    highlight: github
+```{r setup, include=FALSE}
 ```
 
-## Your Familiar Tools
+## Creating Economic Model for Oil and Gas Projects _**EcoMan**_
+### Writing The Economic Functions
 
-Feel free to use the `knitr` infrastructure with dozens of tunable options in
-your document.
+```{r Functions }
+### Writing the Economic Functions to calculate DCF, NPV, IRR and PBP, DPBP
 
-```{r fig.width=6, fig.height=6, fig.align='center'}
-set.seed(123)
-n <- 1000
-x1  <- matrix(rnorm(n), ncol = 2)
-x2  <- matrix(rnorm(n, mean = 3, sd = 1.5), ncol = 2)
-x   <- rbind(x1, x2)
-head(x)
-smoothScatter(x, xlab = "x1", ylab = "x2")
+dcf <- function(x, r, t0=FALSE){
+  # calculates discounted cash flows (DCF) given cash flow and discount rate
+  #
+  # x - cash flows vector
+  # r - vector or discount rates, in decimals. Single values will be recycled
+  # t0 - cash flow starts in year 0, default is FALSE, i.e. discount rate in first period is zero.
+  if(length(r)==1){
+    r <- rep(r, length(x))
+    if(t0==TRUE){r[1]<-0}
+    }
+  x/cumprod(1+r)
+ }
+
+npv <- function(x, r, t0=FALSE){
+  # calculates net present value (NPV) given cash flow and discount rate
+  #
+  # x - cash flows vector
+  # r - discount rate, in decimals
+  # t0 - cash flow starts in year 0, default is FALSE
+  sum(dcf(x, r, t0))
+ }
+
+pbp <- function(x, ...){
+  # calculates payback period (PBP)
+  #
+  # x - cash flows vector
+  # ... - ignored
+  i <- match(1, sign(cumsum(x)))
+  i-2+(-cumsum(x)[i-1]/x[i])
+ }
+
+dpbp <- function(x, r, t0=FALSE){
+  # calculates discounted payback period (DPBP) given cash flow and discount rate
+  #
+  # x - cash flows vector
+  # r - discount rate, in decimals
+  # t0 - cash flow starts in year 0, default is FALSE
+  pbp(dcf(x, r, t0))
+ }
+
+irr <- function(x, t0=FALSE, ...){
+  # calculates internal rate of return (IRR) given cash flow 
+  #
+  # x - cash flows vector
+  # t0 - cash flow starts in year 0, default is FALSE
+tryCatch(uniroot(f=function(i){sum(dcf(x, i, t0))}, 
+                 interval=c(0,1))$root,
+         error=function(e) return(NA)
+        )
+  }
+
+CDF.P1 <- dcf(Project1, r= 0.06, t0 = FALSE)
+
+knitr::kable(CDF.P1)
+```
+## The Input data
+We have two different projects to be evaluated based on the folowing economic parameters:  
+- Net Present Value _**NPV**_  
+- Internal Rate of Return _**IRR**_  
+- Pay back Period _**PBP**_  
+- Discounted Pay back Period _**DPBP**_  
+- Discounted Cash Flow _**DCF**_  
+
+```{r}
+### the Two Project that needed to be evaluated
+# To evaluate the two projects they should have the same project time
+#together to evaluate them together or you should evaluate them separately
+  Time.Evaluation <-c(1:6)
+  Project1 <- c(-1000, 1250, 10, 10, 20, 20)
+  Project2 <- c(-1000, -10, 0, 10, 20, 2000)
+  Projects.data <- data.frame(Time.Evaluation, Project1 , Project2)
+  knitr::kable(Projects.data)
 ```
 
-You can include code snippets of languages other than R, but note that
-the block header has no curly brackets around the language name.
+## The Method of Evaluations
+```{r}
+### Calculating the Discounted Cash Flow "DCF"
+### the interest rate given is 0.06 "6%"
+CDF.P1 <- dcf(Project1, r= 0.06, t0 = FALSE)
+cdfProject1<- data.frame(Time.Evaluation, Project1,CDF.P1)
 
-```cpp
-// [[Rcpp::export]]
-NumericVector timesTwo(NumericVector x) {
-    return x * 2;
-}
+knitr::kable(cdfProject1)
 ```
 
-You can also write math expressions, e.g. $Y = X\beta + \epsilon$,
-footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(iris, 10))
-```
-
-## Stay Tuned
-
-Please visit the [development page](http://github.com/yixuan/prettydoc/) of the 
-`prettydoc` package for latest updates and news. Comments, bug reports and
-pull requests are always welcome.

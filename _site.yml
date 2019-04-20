@@ -11,3 +11,5 @@ navbar:
       href: Fun.html
     - text: "Fault Seal Analysis"
       href: FSA.html
+    - text: "Economic Analysis"
+      href: EconMan.html

@@ -81,142 +81,132 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="TOC" class="toc">
 <ul>
-<li><a href="#a-new-output-format">A New Output Format</a></li>
-<li><a href="#new-styles">New Styles</a></li>
-<li><a href="#your-familiar-tools">Your Familiar Tools</a></li>
-<li><a href="#stay-tuned">Stay Tuned</a></li>
+<li><a href="#creating-economic-model-for-oil-and-gas-projects-ecoman">Creating Economic Model for Oil and Gas Projects <em><strong>EcoMan</strong></em></a><ul>
+<li><a href="#writing-the-economic-functions">Writing The Economic Functions</a></li>
+</ul></li>
+<li><a href="#the-input-data">The Input data</a></li>
+<li><a href="#the-method-of-evaluations">The Method of Evaluations</a></li>
 </ul>
 </div>
 
-<div id="a-new-output-format" class="section level2">
-<h2>A New Output Format</h2>
-<p><code>html_pretty</code> in the <a href="http://github.com/yixuan/prettydoc/"><strong>prettydoc</strong></a> package is a new output format for creating HTML document from R Markdown files. <code>html_pretty</code> is more lightweight compared to <code>html_document</code>, and is more stylish than <code>html_vignette</code> when creating package vignettes.</p>
+<div id="creating-economic-model-for-oil-and-gas-projects-ecoman" class="section level2">
+<h2>Creating Economic Model for Oil and Gas Projects <em><strong>EcoMan</strong></em></h2>
+<div id="writing-the-economic-functions" class="section level3">
+<h3>Writing The Economic Functions</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Writing the Economic Functions to calculate NPV, IRR and ROP
+
+dcf &lt;-<span class="st"> </span><span class="cf">function</span>(x, r, <span class="dt">t0=</span><span class="ot">FALSE</span>){
+  <span class="co"># calculates discounted cash flows (DCF) given cash flow and discount rate</span>
+  <span class="co">#</span>
+  <span class="co"># x - cash flows vector</span>
+  <span class="co"># r - vector or discount rates, in decimals. Single values will be recycled</span>
+  <span class="co"># t0 - cash flow starts in year 0, default is FALSE, i.e. discount rate in first period is zero.</span>
+  <span class="cf">if</span>(<span class="kw">length</span>(r)<span class="op">==</span><span class="dv">1</span>){
+    r &lt;-<span class="st"> </span><span class="kw">rep</span>(r, <span class="kw">length</span>(x))
+    <span class="cf">if</span>(t0<span class="op">==</span><span class="ot">TRUE</span>){r[<span class="dv">1</span>]&lt;-<span class="dv">0</span>}
+    }
+  x<span class="op">/</span><span class="kw">cumprod</span>(<span class="dv">1</span><span class="op">+</span>r)
+ }
+
+npv &lt;-<span class="st"> </span><span class="cf">function</span>(x, r, <span class="dt">t0=</span><span class="ot">FALSE</span>){
+  <span class="co"># calculates net present value (NPV) given cash flow and discount rate</span>
+  <span class="co">#</span>
+  <span class="co"># x - cash flows vector</span>
+  <span class="co"># r - discount rate, in decimals</span>
+  <span class="co"># t0 - cash flow starts in year 0, default is FALSE</span>
+  <span class="kw">sum</span>(<span class="kw">dcf</span>(x, r, t0))
+ }
+
+pbp &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...){
+  <span class="co"># calculates payback period (PBP)</span>
+  <span class="co">#</span>
+  <span class="co"># x - cash flows vector</span>
+  <span class="co"># ... - ignored</span>
+  i &lt;-<span class="st"> </span><span class="kw">match</span>(<span class="dv">1</span>, <span class="kw">sign</span>(<span class="kw">cumsum</span>(x)))
+  i<span class="op">-</span><span class="dv">2</span><span class="op">+</span>(<span class="op">-</span><span class="kw">cumsum</span>(x)[i<span class="op">-</span><span class="dv">1</span>]<span class="op">/</span>x[i])
+ }
+
+dpbp &lt;-<span class="st"> </span><span class="cf">function</span>(x, r, <span class="dt">t0=</span><span class="ot">FALSE</span>){
+  <span class="co"># calculates discounted payback period (DPBP) given cash flow and discount rate</span>
+  <span class="co">#</span>
+  <span class="co"># x - cash flows vector</span>
+  <span class="co"># r - discount rate, in decimals</span>
+  <span class="co"># t0 - cash flow starts in year 0, default is FALSE</span>
+  <span class="kw">pbp</span>(<span class="kw">dcf</span>(x, r, t0))
+ }
+
+irr &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">t0=</span><span class="ot">FALSE</span>, ...){
+  <span class="co"># calculates internal rate of return (IRR) given cash flow </span>
+  <span class="co">#</span>
+  <span class="co"># x - cash flows vector</span>
+  <span class="co"># t0 - cash flow starts in year 0, default is FALSE</span>
+<span class="kw">tryCatch</span>(<span class="kw">uniroot</span>(<span class="dt">f=</span><span class="cf">function</span>(i){<span class="kw">sum</span>(<span class="kw">dcf</span>(x, i, t0))}, 
+                 <span class="dt">interval=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="op">$</span>root,
+         <span class="dt">error=</span><span class="cf">function</span>(e) <span class="kw">return</span>(<span class="ot">NA</span>)
+        )
+  }</code></pre></div>
 </div>
-<div id="new-styles" class="section level2">
-<h2>New Styles</h2>
-<p><code>html_pretty</code> currently supports three page themes (<code>cayman</code>, <code>tactile</code> and <code>architect</code>), and two syntax highlight styles (<code>github</code> and <code>vignette</code>). The theme and highlight styles can be specified in the document metadata, for example:</p>
-<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span>
-  <span class="fu">prettydoc:</span><span class="at">:html_pretty:</span>
-    <span class="fu">theme:</span><span class="at"> architect</span>
-    <span class="fu">highlight:</span><span class="at"> github</span></code></pre></div>
 </div>
-<div id="your-familiar-tools" class="section level2">
-<h2>Your Familiar Tools</h2>
-<p>Feel free to use the <code>knitr</code> infrastructure with dozens of tunable options in your document.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">123</span>)
-n &lt;-<span class="st"> </span><span class="dv">1000</span>
-x1  &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n), <span class="dt">ncol =</span> <span class="dv">2</span>)
-x2  &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">3</span>, <span class="dt">sd =</span> <span class="fl">1.5</span>), <span class="dt">ncol =</span> <span class="dv">2</span>)
-x   &lt;-<span class="st"> </span><span class="kw">rbind</span>(x1, x2)
-<span class="kw">head</span>(x)</code></pre></div>
-<pre><code>##             [,1]        [,2]
-## [1,] -0.56047565 -0.60189285
-## [2,] -0.23017749 -0.99369859
-## [3,]  1.55870831  1.02678506
-## [4,]  0.07050839  0.75106130
-## [5,]  0.12928774 -1.50916654
-## [6,]  1.71506499 -0.09514745</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">smoothScatter</span>(x, <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;x2&quot;</span>)</code></pre></div>
-<p><img src="Economic_Model_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /></p>
-<p>You can include code snippets of languages other than R, but note that the block header has no curly brackets around the language name.</p>
-<div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// [[Rcpp::export]]</span>
-NumericVector timesTwo(NumericVector x) {
-    <span class="cf">return</span> x * <span class="dv">2</span>;
-}</code></pre></div>
-<p>You can also write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code>knitr::kable()</code>.</p>
+<div id="the-input-data" class="section level2">
+<h2>The Input data</h2>
+<p>We have two different projects to be evaluated based on the folowing economic parameters:<br />
+- Net Present Value <em><strong>NPV</strong></em><br />
+- Internal Rate of Return <em><strong>IRR</strong></em><br />
+- Pay back Period <em><strong>PBP</strong></em><br />
+- Discounted Pay back Period <em><strong>DPBP</strong></em><br />
+- Discounted Cash Flow <em><strong>DCF</strong></em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### the Two Project that needed to be evaluated
+<span class="co"># To evaluate the two projects they should have the same project time</span>
+<span class="co">#together to evaluate them together or you should evaluate them separately</span>
+  Time.Evaluation &lt;-<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)
+  Project1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1250</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">20</span>)
+  Project2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1000</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2000</span>)
+  Projects.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Time.Evaluation, Project1 , Project2)
+  knitr<span class="op">::</span><span class="kw">kable</span>(Projects.data)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
+<th align="right">Time.Evaluation</th>
+<th align="right">Project1</th>
+<th align="right">Project2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="right">1</td>
+<td align="right">-1000</td>
+<td align="right">-1000</td>
 </tr>
 <tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="right">2</td>
+<td align="right">1250</td>
+<td align="right">-10</td>
 </tr>
 <tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">10</td>
 </tr>
 <tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
+<td align="right">5</td>
+<td align="right">20</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
+<td align="right">6</td>
+<td align="right">20</td>
+<td align="right">2000</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="stay-tuned" class="section level2">
-<h2>Stay Tuned</h2>
-<p>Please visit the <a href="http://github.com/yixuan/prettydoc/">development page</a> of the <code>prettydoc</code> package for latest updates and news. Comments, bug reports and pull requests are always welcome.</p>
-</div>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>A footnote here.<a href="#fnref1">↩</a></p></li>
-</ol>
+<div id="the-method-of-evaluations" class="section level2">
+<h2>The Method of Evaluations</h2>
 </div>
 </div>
 </div>
