@@ -42,20 +42,6 @@ prod.fun(1000,10,0.2)
 print(df)
 
 ######------------------------------------
-prod.fun <- function(Pi,t,Dr) {
-  df <- NULL
-  i <- c(0:t)
-if (i < t ){    
-    Pi = Pi- (Pi*Dr)
-    #print(paste(round(Pi,0),i+1))
-    
-    df <- rbind(df,data.frame(i, round(Pi,digits = 0)))
-  } else {}
-  
-  names(df)[1] <- "Time"
-  names(df)[2] <- "Production"
-  
-  return(as.data.frame(df))
-  
-}
+prod.fun(1000,10,0.2
+         )
 

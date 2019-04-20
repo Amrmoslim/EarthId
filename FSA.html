@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="AmrMoslim" />
+
+<meta name="date" content="2019-04-20" />
+
+<title>Fault Seal Analysis</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link rel="stylesheet" href="FSA_files/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<div id="container">
+<div class="inner">
+<header>
+<h1 class="title toc-ignore">Fault Seal Analysis</h1>
+<h3 class="author">AmrMoslim</h3>
+<h3 class="date">2019-04-20</h3>
+</header>
+
+<hr>
+
+
+<div id="TOC" class="toc">
+<ul>
+<li><a href="#r-shale-gouge-ratio-sgr">R Shale Gouge Ratio <em>“SGR”</em></a><ul>
+<li><a href="#data-input">Data Input</a></li>
+<li><a href="#data-processing-creating-monte-carlo-model">Data Processing (Creating Monte Carlo Model)</a></li>
+<li><a href="#results-and-outputs">Results and Outputs</a><ul>
+<li><a href="#shale-gouge-ratio-claculation">Shale Gouge Ratio Claculation</a></li>
+<li><a href="#shale-smear-factor-claculation">Shale Smear Factor Claculation</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="r-shale-gouge-ratio-sgr" class="section level1">
+<h1>R Shale Gouge Ratio <em>“SGR”</em></h1>
+<div id="data-input" class="section level2">
+<h2>Data Input</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mc2d)
+
+### Inputs
+  
+  Ftp90 &lt;-<span class="st"> </span><span class="dv">120</span>    ### Meters <span class="al">###</span> FAULT THROW MINIMUM VALUE
+  Ftp10 &lt;-<span class="st"> </span><span class="dv">1000</span>   ### Meters <span class="al">###</span> FAULT THROW MAXIMUM VALUE
+  
+  Ltp90 &lt;-<span class="st"> </span><span class="dv">140</span>    ### Meters <span class="al">###</span> LAYER THICKNESS MINIMUM VALUE
+  Ltp10 &lt;-<span class="st"> </span><span class="dv">500</span>    ### Meters <span class="al">###</span> LAYER THICKNESS MAXIMUM VALUE
+  
+  Ngp90 &lt;-<span class="st"> </span><span class="dv">20</span>     ### %      <span class="al">###</span> NET OVER GROSS MINIMUM VALUE
+  Ngp10 &lt;-<span class="st"> </span><span class="dv">60</span>     ### %      <span class="al">###</span> NET OVER GROSS MAXIMUM VALUE</code></pre></div>
+</div>
+<div id="data-processing-creating-monte-carlo-model" class="section level2">
+<h2>Data Processing (Creating Monte Carlo Model)</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  n =<span class="st"> </span><span class="dv">10000</span>     ### NUMBER OF ITERATIONS
+  seed =<span class="st"> </span><span class="dv">999</span>    ### SEED 
+  
+  ### Calculate the SD 
+  Ftsd &lt;-<span class="st"> </span><span class="kw">sd</span>(Ftp90<span class="op">:</span>Ftp10)
+  Ltsd &lt;-<span class="st"> </span><span class="kw">sd</span>(Ltp90<span class="op">:</span>Ltp10)
+  ngsd &lt;-<span class="st"> </span><span class="kw">sd</span>(Ngp90<span class="op">:</span>Ngp10)
+  
+  ### Calculate the Mean 
+  
+  Ftmean &lt;-<span class="st"> </span><span class="kw">mean</span>(Ftp90<span class="op">:</span>Ftp10)
+  Ltmean &lt;-<span class="st"> </span><span class="kw">mean</span>(Ltp90<span class="op">:</span>Ltp10)
+  ngmean &lt;-<span class="st"> </span><span class="kw">mean</span>(Ngp90<span class="op">:</span>Ngp10)
+
+  ### Fault throw Distribution
+  Ft =<span class="st"> </span><span class="kw">mcstoc</span>(rnorm, <span class="dt">mean=</span>Ftmean, <span class="dt">sd=</span>Ftsd, <span class="dt">rtrunc=</span><span class="ot">TRUE</span>, <span class="dt">linf=</span>Ftp90, <span class="dt">lsup=</span>Ftp10, <span class="dt">seed =</span> seed, <span class="dt">nsv=</span> n )
+
+  ### Layer thickness Distribution
+  Lt =<span class="st"> </span><span class="kw">mcstoc</span>(rnorm, <span class="dt">mean=</span>Ltmean, <span class="dt">sd=</span>Ltsd, <span class="dt">rtrunc=</span><span class="ot">TRUE</span>, <span class="dt">linf=</span>Ltp90, <span class="dt">lsup=</span>Ltp10, <span class="dt">seed =</span> seed, <span class="dt">nsv=</span> n )
+  
+  ### NG Distribution
+    NG =<span class="st"> </span><span class="kw">mcstoc</span>(rnorm, <span class="dt">mean=</span>ngmean, <span class="dt">sd=</span>ngsd, <span class="dt">rtrunc=</span><span class="ot">TRUE</span>, <span class="dt">linf=</span>Ngp90, <span class="dt">lsup=</span>Ngp10, <span class="dt">seed =</span> seed, <span class="dt">nsv=</span> n)
+  <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))
+  <span class="co"># </span>
+  <span class="co"># hist(Ft, xlab=&quot;Fault throw (m)&quot;, breaks=100, col=&quot;cyan&quot;, border = NA)</span>
+  <span class="co"># hist(Lt, xlab=&quot;Layer Thickness (m)&quot;, breaks=100, col=&quot;red&quot;, border = NA)</span>
+  <span class="co"># hist(NG, xlab=&quot;NG (%)&quot;, breaks=100, col=&quot;yellow&quot;, border = NA)</span>
+  
+  DENFT &lt;-<span class="st"> </span><span class="kw">density</span>(Ft) 
+  DENLT &lt;-<span class="st"> </span><span class="kw">density</span>(Lt)
+  DENNG &lt;-<span class="st"> </span><span class="kw">density</span>(NG)
+  <span class="kw">plot</span>(DENFT, <span class="dt">col=</span><span class="st">&quot;#ff606080&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>,<span class="dt">xlab=</span><span class="st">&quot;Fault throw (m)&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Fault Throw Distribution&quot;</span>) 
+  <span class="kw">polygon</span>(DENFT, <span class="dt">col=</span><span class="st">&quot;#ff606080&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)
+  <span class="kw">plot</span>(DENLT, <span class="dt">xlab=</span><span class="st">&quot;Layer Thickness (m)&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Layer Thickness Distribution&quot;</span>)
+  <span class="kw">polygon</span>(DENLT, <span class="dt">col=</span><span class="st">&quot;#6060ff80&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)
+  <span class="kw">plot</span>(DENNG, <span class="dt">xlab=</span><span class="st">&quot;NG (%)&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Net/Gross Distribution&quot;</span>)
+  <span class="kw">polygon</span>(DENNG, <span class="dt">col=</span><span class="st">&quot;#FFDF9F&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)</code></pre></div>
+<p><img src="FSA_files/figure-html/Processing-1.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="results-and-outputs" class="section level2">
+<h2>Results and Outputs</h2>
+<div id="shale-gouge-ratio-claculation" class="section level3">
+<h3>Shale Gouge Ratio Claculation</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  SGR =<span class="st"> </span>(((<span class="dv">100</span><span class="op">-</span>NG)<span class="op">*</span>Lt<span class="op">/</span>Ft))
+  
+   ### Historgam plot for SGR
+   <span class="kw">hist</span>(SGR, <span class="dt">xlab=</span><span class="st">&quot;SGR (%)&quot;</span>, <span class="dt">breaks=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;seagreen1&quot;</span>)</code></pre></div>
+<p><img src="FSA_files/figure-html/SGROutputs-1.png" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   ### density plot for SGR
+   DENSGR &lt;-<span class="st"> </span><span class="kw">density</span>(SGR)
+   <span class="kw">plot</span>(DENSGR) 
+        <span class="kw">polygon</span>(DENSGR, <span class="dt">col=</span><span class="st">&quot;#ff606080&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)
+        <span class="kw">rug</span>(SGR, <span class="dt">side =</span> <span class="dv">3</span>)
+        <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="dv">18</span>,<span class="dv">22</span>),<span class="dt">lwd =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span>) , <span class="dt">lty =</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</code></pre></div>
+<p><img src="FSA_files/figure-html/SGROutputs-2.png" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   P&lt;-<span class="kw">summary</span>(SGR, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.01</span>,<span class="fl">0.1</span>,<span class="fl">0.50</span>,<span class="fl">0.9</span>,<span class="fl">0.99</span>))
+   
+   Pdata&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">unmc</span>(P))
+        <span class="kw">colnames</span>(Pdata)&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>,<span class="st">&quot;SD&quot;</span>,<span class="st">&quot;1%&quot;</span>,<span class="st">&quot;10%&quot;</span>,<span class="st">&quot;50%&quot;</span>,<span class="st">&quot;90%&quot;</span>,<span class="st">&quot;99%&quot;</span>)
+        <span class="kw">rownames</span>(Pdata)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;SGR&quot;</span>
+        
+        SGRdata &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Pdata[<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>])
+   
+   knitr<span class="op">::</span><span class="kw">kable</span>(Pdata[,<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>], <span class="dt">digits =</span> <span class="dv">0</span>,  <span class="dt">caption =</span> <span class="st">&quot;SGR MC Distribution &quot;</span>,<span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<table>
+<caption>SGR MC Distribution</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+<th align="right">1%</th>
+<th align="right">10%</th>
+<th align="right">50%</th>
+<th align="right">90%</th>
+<th align="right">99%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SGR</td>
+<td align="right">37</td>
+<td align="right">13</td>
+<td align="right">21</td>
+<td align="right">24</td>
+<td align="right">34</td>
+<td align="right">54</td>
+<td align="right">82</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   <span class="kw">plot</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">90</span>,<span class="dv">99</span>), <span class="dt">y=</span>Pdata[<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>], <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">lwd =</span> <span class="dv">3</span>,
+            <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;SGR Probability Density Distribution&quot;</span>,
+           <span class="dt">xlab =</span> <span class="st">&quot;Distribution Percentages %&quot;</span>,
+           <span class="dt">ylab =</span> <span class="st">&quot;SGR Distribution&quot;</span>)
+            <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">90</span>),<span class="dt">lwd =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>) , <span class="dt">lty =</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</code></pre></div>
+<p><img src="FSA_files/figure-html/SGROutputs-3.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="shale-smear-factor-claculation" class="section level3">
+<h3>Shale Smear Factor Claculation</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  SSF =<span class="st"> </span>(Ft<span class="op">/</span>((<span class="dv">100</span><span class="op">-</span>NG)<span class="op">*</span>Lt))<span class="op">*</span><span class="dv">100</span>
+
+    ### Histogram plot for SSF
+  <span class="kw">hist</span>(SSF, <span class="dt">xlab=</span><span class="st">&quot;SSF (%)&quot;</span>, <span class="dt">breaks=</span><span class="dv">100</span>, <span class="dt">col=</span><span class="st">&quot;orange&quot;</span>)</code></pre></div>
+<p><img src="FSA_files/figure-html/SSFOutputs-1.png" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    ### density plot for SSF
+   DENSSF &lt;-<span class="st"> </span><span class="kw">density</span>(SSF)
+   <span class="kw">plot</span>(DENSSF) 
+        <span class="kw">polygon</span>(DENSSF, <span class="dt">col=</span><span class="st">&quot;#ff606080&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)
+        <span class="kw">rug</span>(SSF, <span class="dt">side =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="FSA_files/figure-html/SSFOutputs-2.png" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  SSFP&lt;-<span class="kw">summary</span>(SSF, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.01</span>,<span class="fl">0.1</span>,<span class="fl">0.50</span>,<span class="fl">0.9</span>,<span class="fl">0.99</span>))
+  PSSFdata&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">unmc</span>(SSFP), <span class="dt">drop=</span> <span class="ot">TRUE</span>)
+  
+  <span class="kw">colnames</span>(PSSFdata)&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>,<span class="st">&quot;SD&quot;</span>,<span class="st">&quot;1%&quot;</span>,<span class="st">&quot;10%&quot;</span>,<span class="st">&quot;50%&quot;</span>,<span class="st">&quot;90%&quot;</span>,<span class="st">&quot;99%&quot;</span>)
+  <span class="kw">rownames</span>(PSSFdata)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;SSF&quot;</span>
+     SSFy5 =<span class="st"> </span><span class="kw">list</span>(PSSFdata[<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>])
+    
+     knitr<span class="op">::</span><span class="kw">kable</span>(PSSFdata[,<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>], <span class="dt">digits =</span> <span class="dv">0</span>,  <span class="dt">caption =</span> <span class="st">&quot;SSF MC Distribution &quot;</span>,<span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<table>
+<caption>SSF MC Distribution</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+<th align="right">1%</th>
+<th align="right">10%</th>
+<th align="right">50%</th>
+<th align="right">90%</th>
+<th align="right">99%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SSF</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   <span class="kw">plot</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">90</span>,<span class="dv">99</span>), <span class="dt">y=</span>PSSFdata[<span class="dv">3</span><span class="op">:</span><span class="dv">7</span>], <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">main =</span> <span class="st">&quot;SSF Probability Density Distribution&quot;</span>,
+           <span class="dt">xlab =</span> <span class="st">&quot;Distribution Percentages %&quot;</span>,
+           <span class="dt">ylab =</span> <span class="st">&quot;SSF Distribution&quot;</span>) 
+            <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">90</span>),<span class="dt">lwd =</span> <span class="dv">3</span>,<span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>) , <span class="dt">lty =</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</code></pre></div>
+<p><img src="FSA_files/figure-html/SSFOutputs-3.png" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<ul>
+<li><a href="https://wiki.aapg.org/Shale_smear_factor" class="uri">https://wiki.aapg.org/Shale_smear_factor</a><br />
+</li>
+<li><a href="https://wiki.aapg.org/Quantitative_fault_seal_analysis" class="uri">https://wiki.aapg.org/Quantitative_fault_seal_analysis</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

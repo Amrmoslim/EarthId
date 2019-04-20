@@ -9,3 +9,5 @@ navbar:
       href: about.html
     - text: "Production Profile"
       href: Fun.html
+    - text: "Fault Seal Analysis"
+      href: FSA.html
