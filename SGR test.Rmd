@@ -1,0 +1,146 @@
+---
+title: "Shale Gouge Ratio using Monte Carlo Simulation"
+author: "AmrMoslim"
+date: "April 15, 2019"
+output: 
+  html_notebook: 
+    code_folding: none
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately. 
+
+To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
+
+## Inputs and Outputs
+
+You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
+
+
+```{r Ft, echo=FALSE, message=FALSE, warning=FALSE}
+inputPanel(
+
+        helpText( h5("Enter the Estimated Fault throw in meters below: ")),
+        textInput("Ft90", label = h4("P90",tags$h6("(is small)")), value = "100"),
+        
+        textInput("Ft10", label = h4("P10",tags$h6("(is large)")), value = "500"),
+        selectInput("FtDist",
+                              label = "Distribution Type:",
+                              choices = c("Normal Distribution", "Lognormal Distribution"),
+                              selected = "Normal Distribution")
+  )
+inputPanel(
+
+        helpText( h5("Enter the Estimated Layer Thickness in meters below: ")),
+        textInput("Ft90", label = h4("P90",tags$h6("(is small)")), value = "100"),
+        
+        textInput("Ft10", label = h4("P10",tags$h6("(is large)")), value = "500"),
+        selectInput("FtDist",
+                              label = "Distribution Type:",
+                              choices = c("Normal Distribution", "Lognormal Distribution"),
+                              selected = "Normal Distribution")
+  )
+inputPanel(
+
+       helpText( h5("Enter the Net to Gross ratio below: ")),
+        sliderInput("nG", "Net to Gross :",  
+                             min = 1, max = 100, value = c(49, 51 )),
+         
+        selectInput("NgDist",
+                              label = "Distribution Type:",
+                              choices = c("Normal Distribution", "Lognormal Distribution"),
+                              selected = "Normal Distribution"),
+       sliderInput("Simu", "Numbers of Simulations:",  
+                    min = 0, max = 100000, value = 10000)
+     
+  )
+```
+
+```{r SGrCalc, echo=FALSE, message=TRUE, warning=TRUE}
+
+library(mc2d)
+###################### Inputs #####################################################
+  seed = 999
+  Ftp90 <- reactive({as.numeric(input$Ft90)})
+  Ftp10 <- reactive({as.numeric(input$Ft10)})
+  
+  Ltp90 <- reactive({as.numeric(input$Lt90)})
+  Ltp10 <- reactive({as.numeric(input$Lt10)})
+  
+  Ngp90 <- reactive({input$nG[1]})
+  Ngp10 <- reactive({input$nG[2]})
+  
+  n = reactive({input$Simu})
+  
+  ###################### Calculate the SD ###########################################
+  Ftsd <- reactive({sd(Ftp90():Ftp10())})
+  Ltsd <- reactive({sd(Ltp90():Ltp10())})
+  ngsd <- reactive({sd(Ngp90():Ngp10())})
+  
+  ###################### Calculate the Mean ##########################################
+  
+  Ftmean <- reactive({mean(Ftp90():Ftp10())})
+  Ltmean <- reactive({mean(Ltp90():Ltp10())})
+  ngmean <- reactive({mean(Ngp90():Ngp10())})
+  
+  ###################### Generate the Distributions of the aspects ###################
+  #Fault throw thaickness Distribution
+  Ft = reactive({if (input$FtDist =="Normal Distribution" ) 
+  {
+    
+    mcstoc(rnorm, mean=Ftmean(), sd=Ftsd(), rtrunc=TRUE, linf=Ftp90(), lsup=Ftp10(), seed = seed, nsv= n() )}
+    
+    else if (input$FtDist == "Lognormal Distribution")
+    {
+      
+      mcstoc(rlnorm, mean=Ftmean(), sd=Ftsd(), rtrunc=TRUE, linf=Ftp90(), lsup=Ftp10(), seed = seed, nsv= n())}
+    
+  })
+  #Layer thaickness Distribution
+ Lt = reactive({if (input$LtDist =="Normal Distribution" ) 
+  {
+    
+    mcstoc(rnorm, mean=Ltmean(), sd=Ltsd(), rtrunc=TRUE, linf=Ltp90(), lsup=Ltp10(), seed = seed, nsv= n() )}
+    
+    else if (input$LtDist == "Lognormal Distribution")
+    {
+      
+      mcstoc(rlnorm, mean=Ltmean(), sd=Ltsd(), rtrunc=TRUE, linf=Ltp90(), lsup=Ltp10(), seed = seed, nsv= n())}
+    
+  })
+  
+  #NG Distribution
+  #
+  NG = reactive({if (input$NgDist =="Normal Distribution" ) {
+    
+    mcstoc(rnorm, mean=ngmean(), sd=ngsd(), rtrunc=TRUE, linf=Ngp90(), lsup=Ngp10(), seed = seed, nsv= n())}
+    
+    else if (input$NgDist == "Lognormal Distribution") {
+      mcstoc(rlnorm, mean=ngmean(), sd=ngsd(), rtrunc=TRUE, linf=Ngp90(), lsup=Ngp10(), seed = seed, nsv= n())}
+    
+  })
+  ###########################################################################################
+  SGR = reactive({ 
+          (((100-NG())*Lt())/Ft())
+        
+  })
+  
+  ### SGR panel----
+renderPlot({
+        
+        hist(SGR(), xlab="SGR (%)", breaks=100, col="seagreen1") 
+    
+  })
+  
+renderPrint({ summary(SGR(), probs = c(0.01,0.1,0.50,0.9,0.99)) })
+```
+
+
