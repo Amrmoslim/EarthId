@@ -16,7 +16,7 @@ output:
 
 # R Fault Seal Analysis Usong R  _"FSAR"_
 
-the most two famous and common processes to determine the fault seal analysis are Shale Gouge Ratio **"SGR"** and Shale Smear Factor **"SSF"**.
+The most two famous and common processes to determine the fault seal analysis are Shale Gouge Ratio **"SGR"** and Shale Smear Factor **"SSF"**.
 
 ## Data Input
 

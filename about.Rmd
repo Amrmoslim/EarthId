@@ -1,7 +1,10 @@
 ---
 title: "About This Website"
 date: "March 30, 2017"
-output: html_document
+output:
+  html_document: 
+    highlight: kate
+    theme: united
 ---
 ############################################
 
