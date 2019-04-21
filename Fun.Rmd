@@ -18,21 +18,21 @@ to create production profile you need initial production (Pi), duration(Time), a
 ```{r production}
  
  library(ggplot2)
+i = 0
 
 Pi <- 2000
-Duration = c(0:10)
+Duration = 10
 DR <- 0.2
 #df <- data.frame(Duration,Pi)
-df <- NULL
-
-for (i in Duration) {
+df <- c(i,Pi)
+while (i < Duration) {
   
   Pi = Pi- (Pi*DR)
  # print(paste(round(Pi,0),i+1))
 
-df <- rbind(df,data.frame(i, round(Pi,0)))
+df <- rbind(df,data.frame(i+1, round(Pi,0)))
 #df <- rbind(df,i, round(Pi,0))
-
+i=i+1
 }
 
 #df
