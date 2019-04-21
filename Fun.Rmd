@@ -53,10 +53,31 @@ p<- ggplot(df, aes(Time,Production))+geom_point()+geom_line(colour = "blue")+xla
 
 Cumprd<- ggplot(df, aes(Time,Cumulative.Production))+geom_point()+geom_line(colour = "red")+xlab("Time in Years")+ ylab(" Cumulative Production in STBP")
 plotly::ggplotly(p)
+
 plotly::ggplotly(Cumprd)
 ```
 
 ## The Cumulative production during the 'Duration' 
+```{r field_plot, message=FALSE, warning=FALSE, fig.align= 'center',fig.width= 10}
+library(plotly)
+# two <-ggplot(df, aes(Time,Production))+geom_point()+geom_line(aes(y= Cumulative.Production),colour = "blue")+scale_y_continuous(
+#     "Production STBPD", sec.axis = sec_axis(~ .*365, name = "Cumulative Production"))
+# 
+# plotly::ggplotly(two)
+
+ay <- list(
+
+  overlaying = "y",
+  side = "right")
+  
+ plot_ly() %>%
+  add_trace(x = df$Time, y = df$Production, name = "Production STBPD", mode = 'lines+markers') %>%
+  add_trace(x = df$Time, y = df$Cumulative.Production, name = "Cumulative productive STB", mode = 'lines+markers', yaxis = "y2") %>%
+  layout(
+    title = "Field Development Plan", yaxis2 = ay,
+    xaxis = list(title="Time in Years")
+  )
+```
 
 
 ```{r cumprod}
