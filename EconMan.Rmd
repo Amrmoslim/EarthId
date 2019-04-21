@@ -1,5 +1,5 @@
 ---
-title: "EconMan"
+title: "EcoMan"
 output:
   html_document: 
     highlight: kate

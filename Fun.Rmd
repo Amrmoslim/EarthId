@@ -18,45 +18,54 @@ to create production profile you need initial production (Pi), duration(Time), a
 ```{r production}
  
  library(ggplot2)
-i = 0
 
-Pi <- 2000
-Duration = 10
-DR <- 0.2
-#df <- data.frame(Duration,Pi)
-df <- c(i,Pi)
+Pi <- 2000      ### The initial rate of production
+Duration = 10   ### the duration of the production needed to be estiamted
+DR <- 0.2       ### Decline rate nominated per year.
+i = 0
+Cump = Pi*365
+df <- c(i,Pi,Cump)
 while (i < Duration) {
   
   Pi = Pi- (Pi*DR)
- # print(paste(round(Pi,0),i+1))
+  Cump = Cump+Pi*365
+df <- rbind(df,data.frame(i+1, round(Pi,0),Cump))
 
-df <- rbind(df,data.frame(i+1, round(Pi,0)))
-#df <- rbind(df,i, round(Pi,0))
 i=i+1
 }
 
 #df
 names(df)[1] <- "Time"
 names(df)[2] <- "Production"
+names(df)[3] <- "Cumulative.Production"
 
 ```
 
-## the expected production per day yearly 
+## The expected production per day yearly 
 ```{r output, echo=TRUE, message=FALSE, warning=FALSE}
-knitr::kable(df)
+knitr::kable(df, caption = "Table of Production data expected in field Duration")
 
 ```
 
-## a graph shows the production forecast for the field life time
-```{r}
-p<- ggplot(df, aes(Time,Production))+geom_point()+geom_line(colour = "blue")
+## Graph shows the production forecast for the field life time
+```{r Plot}
+p<- ggplot(df, aes(Time,Production))+geom_point()+geom_line(colour = "blue")+xlab("Time in Years")+ ylab(" Production in STBPD")
+
+Cumprd<- ggplot(df, aes(Time,Cumulative.Production))+geom_point()+geom_line(colour = "red")+xlab("Time in Years")+ ylab(" Cumulative Production in STBP")
 plotly::ggplotly(p)
+plotly::ggplotly(Cumprd)
 ```
 
-## the Cumulative production during the 'Duration' 
-```{r}
-print(paste('the total production is' , sum(df$Production)*365))
+## The Cumulative production during the 'Duration' 
+
+
+```{r cumprod}
+Cum.p<- print(paste('The total production is' , sum(df$Production)*365))
 ```
+The Cumulative Production for this Field is about `r Cum.p`  STB based on un interuppted production for a duration of `r Duration`  years and initial Production per day `r df[1,2]`  STB/day and nominal decline rate annually `r DR*100` %.
+
+_**The coming episod, I will show the shiny App that can do this in less than 10 sec with more features.**_ 
+
 
 ############################################
 
