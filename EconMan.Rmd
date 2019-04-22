@@ -114,8 +114,11 @@ npv.p1 <- npv(Project1, r=0.06, t0 = TRUE)
 npv.p2 <- npv(Project2, r=0.06, t0 = TRUE)
 npv.all <- data.frame(npv.p1,npv.p2)
 knitr::kable(npv.all)
+
 #ggplot(npv.all)+geom_col(aes(x= as.factor(colnames(npv.all)), y= npv.all))
-plot(npv.all, type = "p")
+npvplt<- plot(t(npv.all), type = "b")
+tnpv.all <- as.data.frame(t(npv.all))
+#ggplot(tnpv.all)+geom_col(aes(x= tnpv.all, y= tnpv.all))
 ```
 
 ### 3. Calculating the Payback Period _**PBP**_  

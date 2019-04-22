@@ -12,7 +12,7 @@
 
 <meta name="date" content="2019-04-20" />
 
-<title>EconMan</title>
+<title>EcoMan</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -347,6 +347,9 @@ $(document).ready(function () {
 <li>
   <a href="FSA.html">Fault Seal Analysis</a>
 </li>
+<li>
+  <a href="EconMan.html">Economic Analysis</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -359,7 +362,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">EconMan</h1>
+<h1 class="title toc-ignore">EcoMan</h1>
 <h4 class="date">April 20, 2019</h4>
 
 </div>
@@ -563,8 +566,10 @@ knitr<span class="op">::</span><span class="kw">kable</span>(npv.all)</code></pr
 </tbody>
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ggplot(npv.all)+geom_col(aes(x= as.factor(colnames(npv.all)), y= npv.all))</span>
-<span class="kw">plot</span>(npv.all, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>)</code></pre></div>
+npvplt&lt;-<span class="st"> </span><span class="kw">plot</span>(<span class="kw">t</span>(npv.all), <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre></div>
 <p><img src="EconMan_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tnpv.all &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(npv.all))
+<span class="co">#ggplot(tnpv.all)+geom_col(aes(x= tnpv.all, y= tnpv.all))</span></code></pre></div>
 </div>
 <div id="calculating-the-payback-period-pbp" class="section level3">
 <h3>3. Calculating the Payback Period <em><strong>PBP</strong></em></h3>
