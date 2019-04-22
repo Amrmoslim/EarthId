@@ -86,7 +86,7 @@ We have two different projects to be evaluated based on the folowing economic pa
   Project1 <- c(-1000, 1250, 10, 10, 20, 20)
   Project2 <- c(-1000, -10, 0, 10, 20, 2000)
   Projects.data <- data.frame(Time.Evaluation, Project1 , Project2)
-  knitr::kable(Projects.data)
+  knitr::kable(Projects.data, digits = 2)
 ```
 
 ## The Method of Evaluations
@@ -98,11 +98,11 @@ To understand the time value of Money for the two projects.
 
 CDF.P1 <- dcf(Project1, r= 0.06, t0=TRUE)
 cdfProject1<- data.frame(Time.Evaluation, Project1,CDF.P1)
-knitr::kable(cdfProject1)
+knitr::kable(cdfProject1, digits = 2)
 
 CDF.P2 <- dcf(Project2, r= 0.06, t0=TRUE)
 cdfProject2<- data.frame(Time.Evaluation, Project2,CDF.P2)
-knitr::kable(cdfProject2)
+knitr::kable(cdfProject2, digits = 2)
 
 ```
 
@@ -113,12 +113,8 @@ To understand the Whole project monetry value in the present day.
 npv.p1 <- npv(Project1, r=0.06, t0 = TRUE)
 npv.p2 <- npv(Project2, r=0.06, t0 = TRUE)
 npv.all <- data.frame(npv.p1,npv.p2)
-knitr::kable(npv.all)
+knitr::kable(npv.all, digits = 2)
 
-#ggplot(npv.all)+geom_col(aes(x= as.factor(colnames(npv.all)), y= npv.all))
-npvplt<- plot(t(npv.all), type = "b")
-tnpv.all <- as.data.frame(t(npv.all))
-#ggplot(tnpv.all)+geom_col(aes(x= tnpv.all, y= tnpv.all))
 ```
 
 ### 3. Calculating the Payback Period _**PBP**_  
@@ -131,18 +127,38 @@ knitr::kable(pbp.all)
 dpbp.p1 <- dpbp(Project1, r= 0.06, t0=TRUE)
 dpbp.p2 <- dpbp(Project2, r= 0.06, t0=TRUE)
 dpbp.all <- data.frame(dpbp.p1,dpbp.p2)
-knitr::kable(dpbp.all)
+knitr::kable(dpbp.all, digits = 2)
 
 ```
 
 
 ### 4. Calculating the Internal Rate Of Return _**IRR**_
 
-```{r}
+```{r IRR}
 ### IRR Calculations 
 IRR.P1 <- irr(Project1)
 IRR.P2 <- irr(Project2)
 IRR.all <- data.frame(IRR.P1,IRR.P2)
-knitr::kable(IRR.all)
+knitr::kable(IRR.all, digits = 2)
+```
+
+
+```{r plots, fig.width = 15}
+library(cowplot)
+projects <- c("Project1","Project2")
+NpvA <- c(npv.p1,npv.p2)
+pay<- c(pbp.p1,pbp.p2)
+dpay <- c(dpbp.p1,dpbp.p2)
+ir <- c(IRR.P1,IRR.P2)
+Econman <- data.frame(projects,NpvA, pay,dpay, ir)
+knitr::kable(Econman, digits = 2,caption = "The Economic parameters Comparison")
+
+par(mfrow=c(2,2))
+NPVPlt<- ggplot(data = Econman,aes(x=Econman$projects, y= Econman$NpvA))+geom_col()+labs(x = "Projects", y= "NPV", title = "NPV MMSD")
+PayPlt<- ggplot(data = Econman,aes(x=Econman$projects, y= Econman$pay))+geom_col()+labs(x = "Projects", y= "Payback Period", title = "PayBack Period in Years")
+dpayPlt<- ggplot(data = Econman,aes(x=Econman$projects, y= Econman$dpay))+geom_col()+labs(x = "Projects", y= "Disc Payback", title = "Discounted Payback Period in Years")
+IRRPlt<- ggplot(data = Econman,aes(x=Econman$projects, y= Econman$ir*100))+geom_col()+labs(x = "Projects", y= "IRR", title = "Internal Rate Of return %")
+
+plot_grid(NPVPlt,PayPlt,dpayPlt,IRRPlt)
 ```
 
