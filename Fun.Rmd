@@ -14,7 +14,7 @@ date: "March 30, 2017"
 
 to create production profile you need initial production (Pi), duration(Time), and the decline rate(DR) 
 
-## the inputs to the model
+## The inputs to the model
 ```{r production}
  
  library(ggplot2)

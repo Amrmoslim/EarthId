@@ -13,3 +13,5 @@ navbar:
       href: FSA.html
     - text: "Economic Analysis"
       href: EconMan.html
+    - text: "Risking Analysis"
+      href: MCRiskingAnalysis.html
