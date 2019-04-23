@@ -1,7 +1,7 @@
 ---
 title: "Economic Model"
 author: "AmrMoslim"
-date: "2019-04-20"
+date: "2019-04-23"
 output:
   prettydoc::html_pretty:
     theme: tactile
@@ -19,7 +19,7 @@ output:
 
 
 ```r
-### Writing the Economic Functions to calculate NPV, IRR and ROP
+### Writing the Economic Functions to calculate DCF, NPV, IRR and PBP, DPBP
 
 dcf <- function(x, r, t0=FALSE){
   # calculates discounted cash flows (DCF) given cash flow and discount rate
@@ -71,7 +71,22 @@ tryCatch(uniroot(f=function(i){sum(dcf(x, i, t0))},
          error=function(e) return(NA)
         )
   }
+
+CDF.P1 <- dcf(Project1, r= 0.06, t0 = FALSE)
+
+knitr::kable(CDF.P1)
 ```
+
+
+
+|           x|
+|-----------:|
+| -943.396226|
+| 1112.495550|
+|    8.396193|
+|    7.920937|
+|   14.945163|
+|   14.099211|
 ## The Input data
 We have two different projects to be evaluated based on the folowing economic parameters:  
 - Net Present Value _**NPV**_  
@@ -105,4 +120,23 @@ We have two different projects to be evaluated based on the folowing economic pa
 
 ## The Method of Evaluations
 
+```r
+### Calculating the Discounted Cash Flow "DCF"
+### the interest rate given is 0.06 "6%"
+CDF.P1 <- dcf(Project1, r= 0.06, t0 = FALSE)
+cdfProject1<- data.frame(Time.Evaluation, Project1,CDF.P1)
+
+knitr::kable(cdfProject1)
+```
+
+
+
+ Time.Evaluation   Project1        CDF.P1
+----------------  ---------  ------------
+               1      -1000   -943.396226
+               2       1250   1112.495550
+               3         10      8.396193
+               4         10      7.920937
+               5         20     14.945163
+               6         20     14.099211
 

@@ -12,7 +12,7 @@
 
 <meta name="author" content="AmrMoslim" />
 
-<meta name="date" content="2019-04-20" />
+<meta name="date" content="2019-04-23" />
 
 <title>Economic Model</title>
 
@@ -73,7 +73,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <h1 class="title toc-ignore">Economic Model</h1>
 <h3 class="author">AmrMoslim</h3>
-<h3 class="date">2019-04-20</h3>
+<h3 class="date">2019-04-23</h3>
 </header>
 
 <hr>
@@ -93,7 +93,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Creating Economic Model for Oil and Gas Projects <em><strong>EcoMan</strong></em></h2>
 <div id="writing-the-economic-functions" class="section level3">
 <h3>Writing The Economic Functions</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Writing the Economic Functions to calculate NPV, IRR and ROP
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Writing the Economic Functions to calculate DCF, NPV, IRR and PBP, DPBP
 
 dcf &lt;-<span class="st"> </span><span class="cf">function</span>(x, r, <span class="dt">t0=</span><span class="ot">FALSE</span>){
   <span class="co"># calculates discounted cash flows (DCF) given cash flow and discount rate</span>
@@ -144,7 +144,38 @@ irr &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span clas
                  <span class="dt">interval=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="op">$</span>root,
          <span class="dt">error=</span><span class="cf">function</span>(e) <span class="kw">return</span>(<span class="ot">NA</span>)
         )
-  }</code></pre></div>
+  }
+
+CDF.P1 &lt;-<span class="st"> </span><span class="kw">dcf</span>(Project1, <span class="dt">r=</span> <span class="fl">0.06</span>, <span class="dt">t0 =</span> <span class="ot">FALSE</span>)
+
+knitr<span class="op">::</span><span class="kw">kable</span>(CDF.P1)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-943.396226</td>
+</tr>
+<tr class="even">
+<td align="right">1112.495550</td>
+</tr>
+<tr class="odd">
+<td align="right">8.396193</td>
+</tr>
+<tr class="even">
+<td align="right">7.920937</td>
+</tr>
+<tr class="odd">
+<td align="right">14.945163</td>
+</tr>
+<tr class="even">
+<td align="right">14.099211</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="the-input-data" class="section level2">
@@ -207,6 +238,53 @@ irr &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span clas
 </div>
 <div id="the-method-of-evaluations" class="section level2">
 <h2>The Method of Evaluations</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Calculating the Discounted Cash Flow &quot;DCF&quot;
+### the interest rate given is 0.06 &quot;6%&quot;
+CDF.P1 &lt;-<span class="st"> </span><span class="kw">dcf</span>(Project1, <span class="dt">r=</span> <span class="fl">0.06</span>, <span class="dt">t0 =</span> <span class="ot">FALSE</span>)
+cdfProject1&lt;-<span class="st"> </span><span class="kw">data.frame</span>(Time.Evaluation, Project1,CDF.P1)
+
+knitr<span class="op">::</span><span class="kw">kable</span>(cdfProject1)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Time.Evaluation</th>
+<th align="right">Project1</th>
+<th align="right">CDF.P1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">-1000</td>
+<td align="right">-943.396226</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1250</td>
+<td align="right">1112.495550</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="right">8.396193</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">7.920937</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">20</td>
+<td align="right">14.945163</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">20</td>
+<td align="right">14.099211</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
