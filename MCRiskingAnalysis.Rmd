@@ -36,7 +36,7 @@ library(mc2d)
 ```
 
 
-## Data Processing (Creating Monte Carlo Model)
+### Data Processing (Creating Monte Carlo Model)
 ```{r Processing, echo=TRUE, fig.align='center',  fig.width=15, message=FALSE, warning=FALSE}
   n = 10000     ### NUMBER OF ITERATIONS
   seed = 999    ### SEED 
