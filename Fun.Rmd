@@ -89,5 +89,6 @@ _**The coming episod, I will show the shiny App that can do this in less than 10
 
 
 ############################################
+Shinyapp has been created to create production profile without the hassel of changing the code. You can just play with the essential parameters and you get all the results instantaneously.
 
 Please dont hesitate to contact me over a_moslim@live.com to share your comments. 

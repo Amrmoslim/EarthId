@@ -189,3 +189,7 @@ SSF       3    1    1     2     3     4     5
  - <https://wiki.aapg.org/Quantitative_fault_seal_analysis>  
  
  
+############################################
+Shinyapp has been created to calculate FSA Parameters automatically without the hassel of changing the code. You can just play with the essential parameters and you get all the results instantaneously.
+
+Please dont hesitate to contact me over a_moslim@live.com to share your comments. 
