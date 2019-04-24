@@ -376,8 +376,7 @@ $(document).ready(function () {
 <ul>
 <li><a href="#risking-analysis-using-monte-carlo-simulation">Risking Analysis Using Monte Carlo Simulation</a><ul>
 <li><a href="#input-data">Input Data</a></li>
-</ul></li>
-<li><a href="#data-processing-creating-monte-carlo-model">Data Processing (Creating Monte Carlo Model)</a><ul>
+<li><a href="#data-processing-creating-monte-carlo-model">Data Processing (Creating Monte Carlo Model)</a></li>
 <li><a href="#results-and-outputs">Results and Outputs</a></li>
 </ul></li>
 </ul>
@@ -403,9 +402,8 @@ $(document).ready(function () {
   Mp90 &lt;-<span class="st"> </span><span class="dv">80</span>       ### %      <span class="al">###</span> Migration MINIMUM VALUE
   Mp10 &lt;-<span class="st"> </span><span class="dv">90</span>       ### %      <span class="al">###</span> Migration MAXIMUM VALUE</code></pre></div>
 </div>
-</div>
-<div id="data-processing-creating-monte-carlo-model" class="section level2">
-<h2>Data Processing (Creating Monte Carlo Model)</h2>
+<div id="data-processing-creating-monte-carlo-model" class="section level3">
+<h3>Data Processing (Creating Monte Carlo Model)</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  n =<span class="st"> </span><span class="dv">10000</span>     ### NUMBER OF ITERATIONS
   seed =<span class="st"> </span><span class="dv">999</span>    ### SEED 
   
@@ -453,6 +451,7 @@ $(document).ready(function () {
   <span class="kw">plot</span>(DENM, <span class="dt">xlab=</span><span class="st">&quot;Migration COS (%)&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Migration COS Distribution&quot;</span>)
   <span class="kw">polygon</span>(DENS, <span class="dt">col=</span><span class="st">&quot;#FFDF9F&quot;</span>, <span class="dt">border=</span><span class="ot">NA</span>)</code></pre></div>
 <p><img src="MCRiskingAnalysis_files/figure-html/Processing-1.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
 <div id="results-and-outputs" class="section level3">
 <h3>Results and Outputs</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  GCOS =<span class="st"> </span>(TR<span class="op">/</span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span>Rs<span class="op">/</span><span class="dv">100</span> <span class="op">*</span>Sr<span class="op">/</span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span>Mg<span class="op">/</span><span class="dv">100</span>)<span class="op">*</span><span class="dv">100</span>

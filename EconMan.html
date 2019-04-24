@@ -630,8 +630,13 @@ knitr<span class="op">::</span><span class="kw">kable</span>(IRR.all, <span clas
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)
-projects &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Project1&quot;</span>,<span class="st">&quot;Project2&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cowplot)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">projects &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Project1&quot;</span>,<span class="st">&quot;Project2&quot;</span>)
 NpvA &lt;-<span class="st"> </span><span class="kw">c</span>(npv.p1,npv.p2)
 pay&lt;-<span class="st"> </span><span class="kw">c</span>(pbp.p1,pbp.p2)
 dpay &lt;-<span class="st"> </span><span class="kw">c</span>(dpbp.p1,dpbp.p2)
