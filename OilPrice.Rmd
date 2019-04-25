@@ -1,0 +1,66 @@
+---
+title: "Oil Price Fetcher"
+output:
+  html_document: 
+    highlight: kate
+    theme: united
+    toc: yes
+date: "April 25, 2019"
+---
+############################################
+
+
+###  **Oil Prices Fetcher**
+
+to create Oil Prices Monitors and calculate averages per Years for WTI and Brent 
+
+## The inputs to the model
+```{r Links}
+
+# WTI_Daily <- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/718ae3b724d94479a54b3a23bfe8e1fa.csv")
+# WTI_Weekly <- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/c63e90f9f9c24a214b6633a1727bb866.csv")
+# WTI_Monthly<- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/591144e96162fbca6773c1df30fcd6e1.csv")
+WTI_Yearly<- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/07453663141c1232e3552fd58f1d8a8d.csv")
+
+# Brent_Daily <- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/e241a389aa9c167b56a496d05e6153d7.csv" )
+# Brent_Weekly <- read.csv( "https://s3.amazonaws.com/rawstore.datahub.io/84a73eef16080a604013e9cd29137dc3.csv")
+# Brent_Monthly<- read.csv("https://s3.amazonaws.com/rawstore.datahub.io/7cc48e632633716dc847bb1716854cd3.csv" )
+Brent_Yearly<- read.csv( "https://s3.amazonaws.com/rawstore.datahub.io/4b11fe7099f1e3ee6f9a2567f719e092.csv")
+ 
+```
+
+## The expected production per day yearly 
+```{r output, echo=TRUE, message=FALSE, warning=FALSE}
+knitr::kable(WTI_Yearly, caption = "Table of Yearly Average Price for WTI")
+
+knitr::kable(Brent_Yearly, caption = "Table of Yearly Average Price for Brent")
+
+```
+
+## Graph shows the production forecast for the field life time
+```{r Plot}
+library(ggplot2)
+Brent<-ggplot(Brent_Yearly, aes(Brent_Yearly$Date,Brent_Yearly$Price))+geom_point()+scale_x_date()
+
+
+plotly:: ggplotly(Brent)
+plot(Brent_Yearly,type = "l")
+plot(WTI_Yearly,type = "l")
+
+```
+
+
+
+
+```{r cumprod}
+ # The Cumulative Production for this Field is about `r Cum.p`  STB based on un interuppted production for a duration of `r Duration`  years and initial Production per day `r df[1,2]`  STB/day and nominal decline rate annually `r DR*100` %. 
+```
+
+
+_**The coming episod, I will show the shiny App that can do this in less than 10 sec with more features.**_ 
+
+
+############################################
+Shinyapp has been created to create production profile without the hassel of changing the code. You can just play with the essential parameters and you get all the results instantaneously.
+
+Please dont hesitate to contact me over a_moslim@live.com to share your comments. 
