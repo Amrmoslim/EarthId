@@ -1,3 +1,3 @@
 # My Own Website As my Resume
 
-#thank you for being here
+## Thank you for being here
